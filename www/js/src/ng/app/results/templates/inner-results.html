@@ -1,0 +1,19 @@
+<nav>
+    <span ng-hide="innerError" class="dl-label-sm">Results on pages:</span>
+    <span ng-if="innerError" ng-bind-html="data.pData.error"></span>
+    <a href="" class="dl-r-pages"
+        ng-class="{current : $parent.currentPi === p.index}" 
+        ng-repeat="p in ::data.pages track by p.index" 
+        ng-mouseover="$parent.currentPi = p.index" 
+        ng-click="$parent.pClick(p.index)" 
+        >{[{p.page}]}</a> 
+</nav>
+<article class="excerpt" ng-if="!data.pData.error">
+    <section ng-repeat="d in ::data.pData track by $index" ng-hide="currentPi != d.pI" ng-click="pClick(d.pI)">
+
+        <img ng-if="d.img" ng-src="{[{d.img}]}" alt="Excerpt" height="150" hlonload>
+        <div ng-if="d.img" ng-repeat="h in ::d.highlights" class="highlight" style="{[{h.css}]}"></div>
+
+        <div ng-if="d.text" class="transcript">"...<span ng-bind-html="d.text"></span>..."</div>
+    </section>
+</article>

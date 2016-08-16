@@ -1,0 +1,288 @@
+/////////////
+// RESULTS: LIST
+/////////////
+
+.dl-results {
+  box-sizing: border-box;
+}
+
+#dl-r-listview {
+  hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.dl-result {
+  overflow: hidden;
+  height: inherit;
+  position: relative;
+  margin: 12px 0;
+  z-index: 0;
+
+  a.dl-r-title {
+
+    // font-weight: 600;
+    text-decoration: underline;
+    &:visited, &:active {
+    }
+    &:hover, &:focus, &:focus {
+      text-decoration: underline;
+    }
+
+    @media #{$sidebar-max} {
+      margin-left: 20px;
+    }
+  }
+
+  .dl-r-creator, a:visited.dl-r-creator {
+    font-style: italic;
+    color: $creator-c;
+  }
+  .dl-r-collection, a:visited.dl-r-collection {
+    color: $collection-c;
+  }
+  .dl-r-date, a:visited.dl-r-date {
+    color: $date-c;
+
+  }
+
+  .dl-r-subject, a:visited.dl-r-subject {
+    color: $subject-c;
+
+  }
+
+  border-top: 1px solid $white;
+  // border-bottom: 1px solid $white;
+  transition: border-top 1s, border-bottom 1s;
+
+  &:hover {
+    border-top: 1px solid $gray0;
+    // border-bottom: 1px solid $gray0;
+  }
+
+}
+
+.dl-r-content {
+  // position: absolute;
+  // background-color: white;
+  // @extend %frosted-glass;
+  margin: 0 0 10px 120px;
+  padding: 3px 24px 3px 12px;
+
+  // @include breakpoint($break-1200){
+  //  margin: 0 0 10px 120px;
+  // }
+
+  @media #{$sidebar-max} {
+    min-height: 0;
+    margin-left: 0;
+    // padding-right: 100px;
+    padding: 3px 100px 3px 3px;
+  }
+  @media screen and (max-width: 400px) {
+    padding: 3px 24px 3px 3px;
+  }
+
+  .dl-sbtn-xsm {
+    margin-top: 6px;
+  }
+
+  h6 {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 0px;
+  }
+}
+
+.dl-r-lthumb {
+  position: absolute;
+  z-index: -1;
+  width: 100px;
+
+  @media #{$break-1200} {
+    margin-left: 10px;
+  }
+
+  // show/hide thumbnails
+
+  @media #{$sidebar-max} {
+    right: 0;
+  }
+
+  @media screen and (max-width: 400px) {
+    display: none;
+  }
+
+}
+
+// conditional icons for content type
+.dl-r-type-icon {
+  position: absolute;
+  top: 4px;
+  left: 100px;
+  width: 22px;
+  height: 22px;
+  transform: rotate(45deg);
+  color: $dviz-6;
+  @extend %frosted-glass;
+
+  @media #{$sidebar-max} {
+    left: -3px;
+  }
+
+  &:after {
+    position: absolute;
+    top: -2px;
+    right: 2px;
+    transform: rotate(-45deg);
+  }
+  &.image:after {
+    @extend %icon-image;
+    color: $dviz-2;
+
+  }
+  &.text:after {
+    @extend %icon-text;
+    color: $dviz-1;
+    // color: $gray6;
+  }
+  &.moving.image:after {
+    @extend %icon-video;
+    color: $dviz-3;
+    // color: $gray6;
+  }
+  &.sound:after {
+    @extend %icon-sound;
+    color: $dviz-4;
+    // color: $gray6;
+  }
+  &.journal:after {
+    @extend %icon-journal;
+    color: $dviz-5;
+    // color: $gray6;
+  }
+}
+
+.dl-r-thumbview .dl-r-type-icon {
+  left: 0;
+  top: 0;
+}
+
+// metadata table
+
+.row-fluid .dl-r-metadata-table {
+  float: none;
+  margin-left: 0;
+}
+
+.dl-r-metadata-table {
+
+  margin-top: 6px;
+  background-color: white;
+  width: 100%;
+
+  td {
+    width: 100%;
+  }
+  td.dl-r-label {
+    width: 80px;
+    padding-right: 15px;
+    @extend %dl-label;
+    color: $gray7;
+  }
+  a:visited {
+    color: black;
+  }
+}
+
+.dl-result.dl-r-expanded {
+  min-height: 160px;
+  .dl-r-lthumb {
+    max-height: inherit;
+  }
+  .dl-r-metadata-short {
+    display: none;
+  }
+  .dl-r-detailed {
+    display: inline;
+  }
+}
+
+//#dl-r-listview {
+//  transition: visibility 0.2s;
+//  padding-top: 10px;
+//}
+
+.dl-r-inner {
+  margin: 2px 0 6px 0;
+  background-color: $gray0;
+  nav {
+    max-width: 100%;
+    overflow: auto;
+    padding-bottom: 3px;
+  }
+
+  article.excerpt {
+    position: relative;
+    height: 150px;
+    width: 100%;
+    padding-bottom: 6px;
+  }
+  .excerpt section {
+    display: block;
+    position: relative;
+    max-width: 400px;
+    overflow: hidden;
+    margin: 0 auto;
+    cursor: pointer;
+    img {
+      height: 150px;
+      /*width: 400px ;*/
+      //override STUPID CLF (GRRRRR!):
+      max-width: 300%;
+      max-height: 300%;
+      min-height: 30px;
+      min-width: 30px;
+      background: url('../../img/ajax-loader.gif') center no-repeat;
+    }
+
+  }
+  .excerpt .highlight {
+    position: absolute;
+    background-color: rgba(255, 0, 0, 0.3);
+    visibility: hidden;
+  }
+
+  .excerpt .transcript {
+
+    padding: 6px;
+    border: 1px solid $gray1;
+    margin-top: 6px;
+    font-style: italic;
+    br {
+      display: none;
+    }
+    .plaintext_highlight {
+      background-color: rgba(255, 0, 0, 0.3);
+    }
+
+  }
+
+}
+
+.dl-r-pages {
+
+  display: inline;
+  padding: 1px 4px;
+  margin-bottom: -1px;
+
+  &.current {
+    background-color: $white;
+    text-decoration: underline;
+  }
+}
+
+
+

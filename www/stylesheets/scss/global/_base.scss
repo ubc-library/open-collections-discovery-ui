@@ -1,0 +1,120 @@
+
+// import compass & plugins
+// @import "compass";
+// @import "compass/layout/stretching";
+// @import "breakpoint";
+
+// import font awesome styles
+// LOADED via CDN instead (fixes firefox error)
+// @import "../Font-Awesome/scss/font-awesome";
+
+// import global styles
+@import "global-vars";
+@import "structure";
+@import "typography";
+
+@import "animations";
+
+
+// BASE STYLES & CLF Overrides
+
+
+//Body
+html {
+	min-height: 100%;
+	position: relative;
+}
+
+body {
+	min-height: 100%;
+}
+
+hr {
+	 border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+//
+.dl {
+	margin: 0 auto;
+	max-width: 1400px;
+}
+
+// paul irish global box sizing
+.dl-*,.dl-*:before,.dl-*:after,.dl-*:first-child,.dl-*:last-child {
+  box-sizing: border-box;
+}
+
+// force hide
+
+.dl-hide{
+	display:none !important;
+}
+
+// prevent scrolling on body when modal is open
+body.dl-modal-open {
+    overflow: hidden;
+}
+
+// fix cursors on icons in CLF
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    cursor: inherit;
+}
+
+// reset base form styles to fix stylin in iOS:
+input[type='search'], input[type='text'] {
+    -webkit-appearance: none;
+    -webkit-border-radius:0; 
+    border-radius:0;
+}
+
+// CLF "expand" fix
+
+%expandfix {
+	@media #{$max-979}{
+		margin-left:-20px;
+		margin-right:-20px;
+		padding-left:0px;
+		padding-right:0px;
+	}
+}
+
+.dl-expand {
+
+	margin-right: -15px;
+	margin-left: -15px;
+	@media #{$max-979}{
+		margin-left:-20px;
+		margin-right:-20px;
+		padding-left:0px;
+		padding-right:0px;
+	}
+	
+}
+
+.dl-nopadding {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+// fix for the flickr icon (use new FA code)
+i.icon-flickr:before {
+    content: '\f16e';
+}
+
+////////////////////////////
+//Angular-specific classes
+////////////////////////////
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],
+.ng-cloak, .x-ng-cloak,
+.ng-hide, .ng-leave, .ng-leave-active {
+    display: none !important;
+}
+
+
+
+
+

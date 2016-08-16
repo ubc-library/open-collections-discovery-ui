@@ -1,0 +1,190 @@
+/***************** 
+  GLOBAL VARS
+******************/
+
+// left-side navigation column:
+$navwidth: 280px;
+$navwidth-sm: 240px;
+
+/////////////////////
+// RESPONSIVE BREAKPOINTS
+/////////////////////
+
+//sidebar breakpoint:
+$sidebar-max: "screen and (max-width : 680px)";
+$sidebar-break: "screen and (min-width : 680px)";
+
+$retina: "screen and (min-resolution : 1.5dppx)";
+$ipad-and-smaller: "screen and (max-device-width : 1024px)";
+
+$break-1200: "screen and (min-width : 1200px)";
+$max-1200: "screen and (max-width : 1200px_)";
+$break-979: "screen and (min-width : 979px)";
+$max-979: "screen and (max-width : 979px)";
+$max-767: "screen and (max-width : 767px)";
+$max-568: "screen and (max-width : 568px)";
+
+//
+
+// $break-old-iphone: min-device-width 320px, max-device-width 568px;
+$max-320: "screen and (max-width : 320px)";
+$break-p: "screen and (max-width : 319px)";
+
+
+/////////////
+// COLORS
+////////////
+
+//ubc CLF
+$white: #FFF;
+$ubc-blue: #002145;
+$ubc-blue2: #C3D0DB;
+$ubc-blue3: #98B2C3;
+$ubc-blue4: #5E869F;
+$ubc-blue4: #2F5D7C;
+
+$ubc-lblue: #C3D0DB;
+$lib-lblue: rgb(215, 224, 231);
+
+//dl-blues
+// $bblue: #1a2e82;
+$bblue: #1a3e82;
+$lblue: #A5B2CF;  // actually blue
+// $lblue: #C1C1C3;  // actually gray
+
+//grayscale
+$offwhite: #f4f5f6;
+$base-gray: #51545b;
+
+$gray0: lighten($base-gray, 63%);
+$gray1: lighten($base-gray, 58%);
+$gray2: lighten($base-gray, 55%);
+$gray3: lighten($base-gray, 50%);
+$gray4: lighten($base-gray, 40%);
+$gray5: lighten($base-gray, 30%);
+$gray6: lighten($base-gray, 20%);
+$gray7: darken($base-gray, 5%);
+$gray8: darken($base-gray, 13%);
+$gray9: darken($base-gray, 20%);
+
+
+//highlights
+// $orange: #FF6633;
+ $orange: #1a3e82;  // no longer orange..
+ $green: #007700;
+$rss-orange: #d97400;
+
+//typograhic
+$linkblue: #0000FF;
+$linkpurple: #800080;
+
+// pastels
+$p-purple: #ADA3F4;
+$p-green: #B7D19A;
+$p-yellow: #F2DB90;
+$p-blue: #AFD3DD;
+
+//flourescents
+// $dviz-1: #F1CB3C;
+// $dviz-2: #84EB5A;
+// $dviz-3: #57D7EE;
+// $dviz-4: #EFB2F0;
+
+// filter colors
+$collection-c: #127512;  // (green)
+$creator-c: #0E5659; // (blue)
+$subject-c: #937217; // yellowish
+// $date-c: #934217; // brick;
+$date-c: $gray7;
+
+// data viz 
+// $dviz-1: #D6B45C; // (text)
+// $dviz-2: #A5C581; // (img)
+// $dviz-3: #ADA3F4; // (video)
+// $dviz-4: #AFD3DD; // (other)
+
+// brewer color scheme
+// specific to types
+$dviz-0: #665E52; // (other .. gray/brown)
+$dviz-1: #65A39E; // (text .. aqua)
+$dviz-2: #C78162; // (img .. brick)
+$dviz-3: #AF8BA8; // (video .. purpe)
+$dviz-4: #5FC375; // (sound .. light green)
+$dviz-5: #6765B5; // (journal article .. brighter purple)
+$dviz-6: #b3b565; // (dataset .. puke green)
+$dviz-7: #e47cad; // (interactive .. pink)
+
+// general brewer 8 color pallete (visible next to each other)
+$brewer0:rgb(55,126,184);
+$brewer1:rgb(77,175,74);
+$brewer2:rgb(152,78,163);
+$brewer3:rgb(255,127,0);
+$brewer4:#ffd900;
+$brewer5:rgb(247,129,191);
+$brewer6:rgb(166,86,40);
+$brewer7:rgb(228,26,28);
+
+// gradients
+%btngrad {
+    background: #1a2e82; /* Old browsers */
+    background: -moz-linear-gradient(top,  #1a2e82 0%, #1a2e82 74%, #002145 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1a2e82), color-stop(74%,#1a2e82), color-stop(100%,#002145)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #1a2e82 0%,#1a2e82 74%,#002145 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #1a2e82 0%,#1a2e82 74%,#002145 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #1a2e82 0%,#1a2e82 74%,#002145 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #1a2e82 0%,#1a2e82 74%,#002145 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a2e82', endColorstr='#002145',GradientType=0 ); /* IE6-9 */
+}
+
+//elements
+$srch-bg: #002C5B;
+
+// ADMIN
+$admin-bright: #FF4E08;
+$admin-dark: #a62f00;
+// $admin-light: #BF5C34;
+// $admin-light: #D26F35;
+$admin-light: #D78347;
+// $admin-lighter: #B97B56;
+
+// FEATURED THEMES
+$default-font: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica-Light, Helvetica, Arial, 'Lucida Grande', sans-serif;
+$feature-font: 'Merriweather', Georgia, $default-font;
+
+// Chung
+$chung-primary: rgba(166, 1, 21, 1);
+$chung-secondary: rgba(127,15,32,1);
+
+// Langmann
+$langmann-primary: rgba(95, 55, 17, 1);
+$langmann-secondary: rgba(61,30,2,1);
+
+// BIRS
+$birs-primary: rgba(6, 77, 126, 1);
+$birs-secondary: rgba(6, 90, 150, 1);
+
+// BC Bibliography
+$bcbibliography-primary: rgba(15, 61, 16, 1);
+$bcbibliography-secondary: rgba(14, 52, 14, 1);
+
+// Chinese Canadian Stories
+$ccs-primary: rgba(41, 38, 26, 1);
+$ccs-secondary: rgba(204, 51, 51, 1);
+
+// UBC Theses and Dissertations
+$ubctheses-primary: #002145;
+$ubctheses-secondary: rgba(145, 113, 10, 1);
+
+// UBC Theses and Dissertations
+$first100theses-primary: rgba(46, 38, 51, 1);
+$first100theses-secondary: rgba(88, 73, 98, 1);
+
+// UBC Publications
+$ubcpublications-primary: rgba(30, 65, 62, 1);
+$ubcpublications-secondary: rgba(84, 121, 128, 1); 
+$ubcpublications-tertiary: rgba(200, 200, 200, 0.3);
+
+// BC Historical
+$bcnewspaper-primary: rgba(128, 117, 85, 1);
+$bcnewspaper-secondary: rgba(163, 144, 85, 1);
+$bcnewspaper-tertiary: rgba(200, 200, 200, 0.3);

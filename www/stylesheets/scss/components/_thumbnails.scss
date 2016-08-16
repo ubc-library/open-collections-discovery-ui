@@ -1,0 +1,155 @@
+///////////////////
+// RESULTS: THUMBNAIL VIEW
+///////////////////
+// all thumbs
+img.dl-thumb {
+  @extend .dl-small-txt;
+  color: $gray2;
+  min-height: 30px;
+  min-width: 30px;
+  background: url('../../img/ajax-loader.gif') center no-repeat;
+}
+
+// "Basic" thumbnails - for use in lists / next to other info
+
+.dl-basic-thumb {
+  img {
+    width: 100px;
+    height: auto;
+  }
+}
+
+// "Rich" thumbnails - standalone links to items, displayed in a grid
+
+// #dl-r-thumbsview {
+//     position: relative; 
+//     height: auto;
+//     min-width: 100%;
+
+// }
+
+.ng-thumb-wrapper {
+  margin: 0;
+  padding: 0;
+}
+
+.dl-rich-thumb {
+  display: inline-block;
+  position: relative;
+
+  width: 20%;
+  height: auto;
+  transition: border-color 0.4s;
+
+  @media #{$max-767} {
+    width: 25%;
+  }
+  @media #{$max-568} {
+    width: 50%;
+  }
+
+  &.dl-w100 {
+    width: 100%;
+  }
+
+  .dl-r-save-result {
+    right: 2px;
+    top: -2px;
+  }
+}
+
+.dl-rich-thumb-inner {
+  position: relative;
+  height: 198px;
+  width: 94%;
+  overflow: hidden;
+  // padding: 18px 0;
+  vertical-align: middle;
+  margin: auto;
+  display: block;
+  border: 2px solid white;
+  &:hover {
+    border: 2px solid $bblue;
+    cursor: pointer;
+  }
+
+  img {
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    max-width: 162px;
+    max-height: 194px;
+    @media #{$max-568} {
+      max-width: 200px;
+    }
+  }
+
+  a {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+
+  .dl-rt-inner-top, .dl-rt-inner-bottom {
+    background: rgba(255, 255, 255, 0.76);
+    // background: red;
+    height: 18px;
+    width: 100%;
+    // margin: 2px;
+    position: absolute;
+  }
+
+  .dl-rt-inner-top {
+    top: 0;
+  }
+  .dl-rt-inner-bottom {
+    @extend .dl-small-txt;
+    text-align: center;
+    bottom: 0;
+    height: auto;
+    max-height: 58px;
+    text-overflow: ellipsis;
+  }
+}
+
+.dl-thumb-type-icon {
+  font-size: 4em;
+  // position: relative;
+
+  &:after {
+    width: 100%;
+    position: absolute;
+    // top: 50%;
+    margin-top: 50%;
+    transform: translate(0, -50%);
+    text-align: center;
+    vertical-align: middle;
+    opacity: 0.33;
+  }
+
+  &.image:after {
+    @extend %icon-image;
+    color: $dviz-2;
+
+  }
+  &.text:after {
+    @extend %icon-text;
+    color: $dviz-1;
+    // color: $gray6;
+  }
+  &.moving.image:after {
+    @extend %icon-video;
+    color: $dviz-3;
+    // color: $gray6;
+  }
+  &.sound:after {
+    @extend %icon-sound;
+    color: $dviz-4;
+    // color: $gray6;
+  }
+}
+
+

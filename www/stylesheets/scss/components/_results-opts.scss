@@ -1,0 +1,95 @@
+/////////////
+// RESULTS OPTS
+/////////////
+
+$bnnrheight: 32px; // set top nav height
+$bnnrheightM: 32px; // top nav height for mobile optimized button sizes
+
+.dl-pages-count {
+    margin-left: 10px;
+    font-weight: bold;
+    float: left;
+}
+
+#dl-r-ursearch {
+    width: 100%;
+    position: relative;
+    background: $gray0;
+    padding: 3px;
+    margin:1em 0 1em;
+    min-height: 63px;
+}
+
+.dl-r-feedback {
+    float: left;
+    vertical-align: bottom;
+    padding-top: 6px;
+}
+
+#dl-r-opts {
+    margin-bottom: 0;
+}
+
+.dl-results-options {
+    margin-bottom: 0;
+    display: inline-block;
+    float: right;
+    margin-right: 6px;
+    margin-bottom: 6px;
+
+    select {
+        height: 24px;
+        font-style: capitalize;
+        margin-top: 3px;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-bottom: 0;
+        width: auto;
+        font-size: 14px;
+        line-height: 14px;
+        box-sizing: content-box;
+    }
+
+    margin-left:0;
+    display: inline;
+    text-align:left;
+    position:relative;
+    white-space: nowrap;
+
+
+    li {
+        position:relative;
+        display: inline-block;
+        list-style-type:none;
+        line-height: $bnnrheight;
+        padding-left: 15px;
+
+        @media #{$sidebar-max} {
+            display: block;
+            float: right;
+            clear: both;
+        }
+    }
+
+    li:first-child {
+        padding-left: 0;
+
+    }
+}
+
+.dl-r-opt-label {
+    color: $bblue;
+}
+
+
+@media #{$sidebar-max} {
+    .dl-r-filters:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+.dl-applied-filters {
+    @extend %ani-highlight-orange;
+    padding: 1px 3px;
+}

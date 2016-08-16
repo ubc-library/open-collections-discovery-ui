@@ -1,0 +1,270 @@
+/////////////////////
+// SAVED FOLDER BTN
+////////////////////
+
+.dl-r-saved-folder {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    position: relative;
+    vertical-align: bottom;
+}
+
+
+.dl-r-saved-folder .fa{
+    font-size: 1.6em;
+    position: absolute;
+    top: 8px;
+
+        &.fa-folder {
+            color: $lblue;
+        }
+}
+
+.dl-r-saved-count {
+    position: absolute;
+    top: 18px;
+    left: 8px;
+    text-align: center;
+    padding-top:0;
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    background-color: $bblue;
+    color: $white;
+    @extend %dl-small-txt;
+    line-height: 18px;
+}
+#dl-r-opts {
+.dl-r-saved-folder:hover{
+    cursor: pointer;
+    .fa{
+        color: $bblue;
+    }
+    .dl-r-saved-count {
+        background-color: orange;
+        // color: $bblue;
+    }
+
+}
+}
+
+// Save Result (from result view)
+
+.dl-r-save-result{
+    position: absolute;
+    right:0;
+    top: 3px;
+    display: block;
+
+    height: 24px;
+    width: 24px;
+    // border-radius: 12px;
+    
+    &:before{
+        @extend %fa-folder-o;
+        position: absolute;
+        left: 6px;
+        top: 2px;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:hover:before {
+        color: $bblue;
+    }
+
+    &:hover:after {
+        @extend .dl-small-txt;
+        margin-left: -23px;
+        content: 'ADD';
+        color: $bblue;
+    }
+
+    &.saved:before{
+        @extend %fa-folder;
+        color: $lblue;
+    }
+
+    &.saved:hover:before {
+        color: $bblue;
+    }
+
+    &.saved:hover:after{
+        @extend .dl-small-txt;
+        margin-left: -48px;
+        content: 'REMOVE';
+    }
+}
+
+//////////////
+// SAVED FOLDER MODAL
+//////////////
+
+.dl-sf-top{
+    @extend .dl-modal-top;
+
+    padding: 6px 6px 8px 24px;
+    z-index: 201;
+
+    h3 {
+        margin: 0;
+        display: inline-block;
+        vertical-align: bottom;
+    }
+
+}
+
+.dl-sf-actions {
+    background-color: $gray0;
+    padding: 20px;
+    border-radius: 3px;
+
+    .dl-btn, .dl-sbtn {
+        display: inline-block;
+        float: left;
+        width: auto;
+        margin-right: 24px;
+        padding: 4px 26px;
+        margin-top: 10px;
+
+        .fa {
+            margin-right: 12px;
+        }
+    }
+    .dl-sbtn.dl-sf-clear {
+        float: right;
+        border: 1px solid red;
+        margin-right: 0px;
+
+        &:hover {
+            color: white;
+            background-color: red;
+        }
+
+    }
+
+    @media #{$max-568}{
+        .dl-btn {
+            width: 80%;
+            float: left;
+            margin-left: 10%;
+            margin-top: 12px;
+        }
+    }
+}
+
+.dl-sf-itemswrap{
+    @extend .dl-modal-content;
+    padding: 59px 12px 12px;
+
+
+    .dl-result {
+        margin-top: 18px;
+    }
+}
+
+.dl-sf-noitems {
+    margin: 36px 12px;
+    text-align: center;
+}
+
+.dl-sf-email.ng-hide-add {
+    display: none;
+}
+
+.dl-sf-email {
+    margin: 12px 0 6px 0;
+    padding-top: 18px;
+    border-top: 1px solid $gray3;
+
+    input {
+        display: inline-block;
+        width: 67%;
+        margin: 0 0 0 5%;
+    }
+
+    .dl-btn {
+        float:right;
+        height: 30px;
+        display: inline-block;
+        width: 10%;
+        min-width: 120px;
+        margin-right: 5%;
+    }
+
+    @media #{$max-568}{
+        .dl-btn {
+            width: 80%;
+            float: left;
+            margin-left: 10%;
+            margin-top: 12px;
+        }
+        input {
+            width: 90%;
+            margin-left: 3%;
+        }
+    }
+
+}
+
+// .dl-warning {
+//     margin: 6px;
+//     padding: 6px 6px;
+//     background-color: #fff0f0;
+
+//     p{ margin: 0;}
+
+//     .fa-warning {
+//         color: red;
+//     }
+
+//     .close-warning {
+//         font-size: 0.9em;
+//         color: red;
+//         float: right;
+//         margin-top: -10px;
+//     }
+// }
+
+.dl-success {
+  margin: 6px;
+  padding: 6px 6px;
+  border: 1px solid green;
+  background-color: #DCFFD6;
+
+  p{ margin: 0;}
+
+  .fa-success {
+    color: green;
+  }
+
+  .close-success {
+    font-size: 0.8em;
+    color: green;
+    float: right;
+    margin-top: -10px;
+  }
+}
+
+.dl-info {
+  margin: 6px;
+  padding: 6px 6px;
+  border: 1px solid yellow;
+  background-color: #FFFFCC;
+
+  p{ margin: 0;}
+
+  .fa-info {
+    color: yellow;
+  }
+
+  .close-info {
+    font-size: 0.8em;
+    color: yellow;
+    float: right;
+    margin-top: -10px;
+  }
+}

@@ -1,0 +1,48 @@
+////////////////////
+// Masthead
+////////////////////
+
+.dl-masthead {
+
+    position: relative;
+
+    height: 100%;
+
+    background-color: white;
+
+    h1 {
+        font-weight: 400;
+    }
+    
+    a, a:visited, a:hover, a:active {
+        color: $ubc-blue;
+    }
+
+    .breadcrumb {
+      height: auto;
+      min-height: 32px;
+
+    }
+}
+
+.dl-masthead-blue {
+    @extend .dl-masthead;
+    background-color: $ubc-blue;
+    border-bottom: 3px solid $ubc-blue;
+}
+.mainRssFeed {
+  font-size: 16px;
+  position: relative;
+  float: right;
+  top: 5px;
+
+    i {
+        margin-left: 6px;
+    }
+  a {
+    text-decoration: none;
+  }
+  a:hover, a:visited {
+    text-decoration: none;
+  }
+}

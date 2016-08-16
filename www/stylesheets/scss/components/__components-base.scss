@@ -1,0 +1,40 @@
+/**************
+   COMPONENTS
+****************/
+
+// load patterns
+@import 'component-patterns';
+
+
+// load global components
+@import 'containers';
+@import 'loading';
+@import 'masthead';
+@import 'buttons';
+@import 'modals';
+@import 'search-bar';
+@import 'side-nav';
+@import 'pagination';
+@import 'facets';
+
+// @import 'results-thumbs';
+@import 'thumbnails';
+@import 'dataviz';
+
+//load area & page-specific components
+
+//@import 'home';
+@import 'results-opts';
+@import 'results-list';
+@import 'saved-results';
+//@import 'collection';
+//@import 'browse';
+//@import 'item';
+//@import 'adv-search';
+//@import 'admin';
+//@import 'third-party';
+//@import 'dataexplorer';
+//@import 'research';
+//@import 'documentation';
+//@import 'errors';
+//@import 'issue-collector';

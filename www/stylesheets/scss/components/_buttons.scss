@@ -1,0 +1,161 @@
+/////////////
+//BASE BUTTONS
+/////////////
+
+a.dl-btn, a.dl-btn:visited {
+    color:$white;
+    text-decoration: none;
+    text-shadow:none;
+}
+
+a.dl-btn:hover, a.dl-btn:active {
+    color: $bblue;
+    text-decoration: none;
+    text-shadow:none;
+}
+
+.dl-btn {
+    display: block;
+    background-color: $bblue;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2px 4px;
+    cursor: pointer;
+
+    // @extend %btngrad;
+
+    @extend %border-rad-sm;
+    border:1px solid $white;
+    color: $white;
+    text-decoration: none;
+    text-shadow:none;
+    
+    text-align:center;
+    vertical-align: middle;
+
+    &:hover {
+        background-color: $white;
+        color: $bblue;
+        border: 1px solid $bblue;
+    }
+
+    &:active {
+        background-color: $white;
+        color: $bblue;
+        box-shadow: $bblue 0 0 2px 2px inset;
+    }
+}
+
+.dl-btn-lrg {
+    @extend .dl-btn;
+    font-size: 1.2em;
+    line-height: 32px;
+    min-height: 32px;
+}
+
+.dl-btn-sm {
+    @extend .dl-btn;
+    @extend %dl-small-txt;
+
+    height: 30px;
+    line-height: 30px;
+}
+
+.dl-btn-xsm {
+    @extend .dl-btn;
+    height: 26px;
+    font-size: 11px;
+    line-height: 26px;
+    
+}
+
+//SUBTLE BUTTONS
+a.dl-sbtn, a.dl-sbtn:visited {
+    color:$bblue;
+    text-decoration: none;
+    text-shadow:none;
+}
+
+a.dl-sbtn:hover, a.dl-sbtn:active {
+    color: $bblue;
+    text-decoration: none;
+    text-shadow:none;
+}
+
+.dl-sbtn {
+    @extend %border-rad-sm;
+    display: block;
+    text-decoration: none;
+    text-shadow:none;
+    text-align:center;
+    vertical-align: middle;
+
+    background-color: $white;
+    color: $bblue;
+    border: 1px solid $gray2;
+
+    transition: border 0.3s ease-out;
+
+    input {
+        vertical-align: middle;
+    }
+
+    &:hover {
+
+        background-color: $white;
+        color: $bblue;
+        border: 1px solid $bblue;
+
+        // box-shadow: $lblue 0 0 2px 2px inset;
+    }
+
+    &:active {
+        background-color: $gray1;
+        color: $bblue;
+        box-shadow: $lblue 0 0 2px 2px inset;
+    }
+}
+
+.dl-sbtn-lrg {
+    @extend .dl-btn-lrg;
+    @extend .dl-sbtn;
+}
+
+.dl-sbtn-sm {
+    font-family: $smallfont;
+    @extend .dl-sbtn;
+    height: 30px;
+    font-size: 12px;
+    line-height: 24px;
+}
+
+.dl-sbtn-xsm {
+    font-family: $smallfont;
+    @extend .dl-sbtn;
+    height: 22px;
+    font-size: 11px;
+    line-height: 18px;
+    font-weight: bold;
+}
+
+//special buttons
+.dl-browse-cols-btn {
+    margin-top: 34px;
+    width: 60%;
+}
+
+// disabled state
+.dl-btn, .dl-btn-lrg, .dl-btn-sm, .dl-sbtn, .dl-sbtn-lrg, .dl-sbtn-sm {
+    &.disabled {
+        background-color: $gray4;
+        color: #fff;
+        border: 1px solid #fff;
+        &:hover {
+            background-color: $gray4;
+            cursor: not-allowed;
+            color: #fff;
+            border: 1px solid #fff;
+        }
+    }
+}

@@ -1,0 +1,152 @@
+// CONTAINERS & CONTENT AREAS
+
+
+.dl-content {
+    // performance hacks: turns on GPU acceleration if applicable
+    -webkit-transform:translateZ(0);
+    -webkit-backface-visibility: hidden; 
+
+    background: $white;
+}
+
+.dl-home-content {
+    position: relative;
+    background: $white;
+    // margin-top: -23px;
+    // padding-top: 23px;
+    padding-bottom: 15px;
+}
+
+.dl-call2action {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 40px;
+    margin-top: 0px;
+    margin-bottom: 32px;
+    position: relative;
+    text-align: center;
+    color: $white;
+}
+
+.dl-padded {
+    padding: 12px;
+}
+
+.dl-section-head {
+    border-bottom:1px solid $gray9;
+    font-style: italic;
+    text-align: center;
+    @extend .libserif;
+}
+
+
+// collapsible section pieces
+.dl-collapse-section {
+    position: relative;
+    margin-top: 1em;
+    @extend .dl-hr-bottom-base;
+}
+
+.dl-collapse-title {
+    display: block;
+    padding: 3px 6px;
+    background-color: $gray0;
+    // font-size: 1.1em;
+    // line-height: 22px;
+    // color: #222;
+    font-weight: 400;
+    margin: 0;
+    &:hover {
+        cursor: pointer;
+        background: $gray2;
+    }
+}
+
+.dl-collapse-content {
+    margin: 18px 0;
+}
+
+.dl-arrow-feature {
+    position:relative;
+    padding: 12px;
+    background-color: $gray1;
+    border-radius: 3px;
+
+    .dl-uparrow-sm {
+        position: absolute;
+        margin-top: -20px;
+        left: 120px;
+    }
+}
+
+.dl-extralight-cont {
+    background-color: $gray1;
+    // @extend .dl-spaced-xsm;
+    padding: 6px 0;
+    margin: 12px;
+}
+
+
+
+// FOOTER(s)
+
+// (should be themed)
+
+.dl-foot {
+    height: 2em;
+    line-height: 2em;
+    width: 100%;
+    border-bottom: 1px solid $gray4;
+    text-align: center;
+
+    a img {
+        vertical-align: top;
+        margin: auto;
+        margin-top: 3px;
+        height: 1.4em;
+    }
+}
+
+.dl-2line{
+        display: block;
+        // background-color: $orange;
+        border-top: 1px solid $gray1;
+        border-bottom: 1px solid $gray3;
+        width: 100%;
+        height: 1px;
+    }
+
+// Seperators
+.dl-hr-w {
+    border-top: 1px solid $white;
+}
+
+// point down (triangle)
+
+.dl-downarrow {
+        content: ' ';
+        position: absolute;
+        z-index: 100;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 16px 140px 0 140px;
+        border-color: $srch-bg rgba(255, 255, 255, 0) $srch-bg rgba(255, 255, 255, 0);
+        -webkit-transform: rotate(0.01deg);
+        -moz-transform: scale(1.01);
+}
+
+.dl-warning {
+    width: 80%;
+    margin: 6px 10%;
+    border: 1px solid $admin-bright;
+    display: block;
+    padding: 6px;
+    text-align: center;
+}
+
+
+
+

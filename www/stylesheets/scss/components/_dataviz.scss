@@ -1,0 +1,117 @@
+///////////////
+// DATA VIZ
+//////////////
+
+
+.brewer0 {
+    fill: $brewer0;
+    color: $brewer0;
+}
+.brewer1 {
+    fill: $brewer1;
+    color: $brewer1;
+}
+.brewer2 {
+    fill: $brewer2;
+    color: $brewer2;
+}
+.brewer3 {
+    fill: $brewer3;
+    color: $brewer3;
+}
+.brewer4 {
+    fill: $brewer4;
+    color: $brewer4;
+}
+.brewer5 {
+    fill: $brewer5;
+    color: $brewer5;
+}
+.brewer6 {
+    fill: $brewer6;
+    color: $brewer6;
+}
+.brewer6 {
+    fill: $brewer6;
+    color: $brewer6;
+}
+.brewer7 {
+    fill: $brewer7;
+    color: $brewer7;
+}
+
+
+.dl-one-bar, .dl-collection-de {
+    font-size: 0.8em;
+
+    fill: $dviz-0;
+    color: $dviz-0;
+
+    .text {
+        fill: $dviz-1;
+        color: $dviz-1;
+    }
+    .still.image {
+        fill: $dviz-2;
+        color: $dviz-2;
+    }
+    .moving.image {
+        fill: $dviz-3;
+        color: $dviz-3;
+    }
+    .sound {
+        fill: $dviz-4;
+        color: $dviz-4;
+    }
+    .journal, .journalarticle, .article {
+        fill: $dviz-5;
+        color: $dviz-5;
+    }
+    .dataset {
+    fill: $dviz-6;
+    color: $dviz-6;
+    }
+        .interactive {
+        fill: $dviz-7;
+        color: $dviz-7;
+    }
+
+
+
+ // hides other labels, shows labels that are too short to fit.
+}
+.dl-one-bar {
+    cursor: pointer;
+    .b-text {
+        transition:opacity 0s linear 0.3s,opacity 0.3s linear, font-weight 0.3s linear;
+        opacity: 0;
+    }
+    .b-text.active {
+        opacity:1;
+    }
+}
+// .dl-onebar.active {
+//     .b-text{
+//         opacity:1;
+//     }
+// }
+
+
+
+// .dl-one-bar .active{
+//     cursor: pointer;
+//      .b-text {
+//         transition:visibility 0s linear 0.3s,opacity 0.3s linear, font-weight 0.3s linear;
+//         opacity: 0;
+//         visibility: hidden;
+//     }
+//     &>.b-text {
+//     visibility: visible;
+//     opacity:1;
+//     transition-delay:0s;   
+//     }
+// }
+
+.date-chart-area {
+    fill: $lblue;
+}

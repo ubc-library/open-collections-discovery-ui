@@ -1,0 +1,346 @@
+/////////////
+//SEARCH BAR
+/////////////
+.dl-srch-cont {
+    margin-top: 18px;
+    margin-bottom: 6px;
+    display: inline-block;
+    width: 100%;
+}
+
+.dl-searchbox {
+    background-color: $gray1;
+    padding: 14px 0px 20px 0px;
+    margin: 20px 0px;    
+    border-radius: 3px;
+}
+
+
+@media all and (max-width: 640px) {
+    .dl-searchbox {
+        .span4 {
+            padding-right: 20px;
+        }
+        .span6, .span8, .span10 {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .span2 {
+            padding-left: 13px;
+            padding-right: 13px;
+        }
+    }
+}
+
+.dl-search {
+    position: relative;
+    @extend %borderbox;
+    //width: 100%; removed for discovery-ui
+    margin-top: 6px;
+
+    form {
+        margin-bottom: 0;
+    }
+
+    input[type="search"] {
+        position:relative;
+        width: 100%;
+        height: 40px;
+        margin-top: 1px;
+        //margin-right: -112px;
+        //margin-left: -7px;
+        margin-bottom: 0;
+        z-index: 99px;
+        display: inline-block;
+        top: 0;
+        border: 1px solid white;
+        font-size: 1.2em;
+
+        @extend %border-rad-sm;
+    }
+    
+    select[type="search"] {        
+        position:relative;
+        width: 100%;
+        height: 42px;
+        margin-right: -112px;
+        margin-left: -7px;
+        margin-bottom: 0;
+        z-index: 99px;
+        display: inline-block;
+        top: 0;
+
+        font-size: 1.2em;
+        
+
+        @extend %border-rad-sm;
+    }
+    
+    .date-from, .date-to {
+        @extend %border-rad-sm;          
+        position:relative;
+        width: 100%;
+        height: 40px;
+        margin-top: 1px;
+        margin-bottom: 0;
+        z-index: 99px;
+        display: inline-block;
+        top: 0;
+
+        font-size: 1.2em;
+    }
+
+    
+    .dl-search-btn {
+        position:absolute;
+        right: 17px;
+        top: 2px;
+        width: 100px;
+        margin-left: 0;
+        display: inline;
+        z-index: 100;
+        height: 38px;
+
+        @extend %border-rad-r-sm;
+
+        background-color: $bblue;
+        border: 1px solid $white;
+        color: $white;
+
+        .dl-srch-svg {
+            margin-top: 3px;
+        }
+
+        @media #{$max-568} {
+            width: 60px;
+        }
+
+
+
+        &:hover {
+        background-color: $white;
+        color: $bblue;
+        box-shadow: $bblue 0 0 0px 1px inset;
+        
+            .dl-srch-svg {
+                fill: $bblue;
+            }
+
+        }
+
+        &:active {
+            background-color: $white;
+            color: $bblue;
+            box-shadow: $bblue 0 0 2px 2px inset;
+        }
+    }
+}
+
+.dl-search-opts {
+    margin-top: 3px;
+    width: 100%;
+
+    ul {
+        list-style-type: none;
+        margin-bottom: 0;
+        margin-left: 0;
+
+        li {
+            display: inline-block;
+            margin-left: 12px;
+        }
+        li:first-child {
+            margin-left:0;
+        }
+        
+        label{
+            color: white;
+            @extend .dl-small-txt;
+            // font-size: 0.85em;
+            font-weight: 400;
+            vertical-align: bottom;
+        }
+        input {
+            margin-right: 3px;
+            vertical-align: middle;
+            margin-top: 2px;
+            margin-bottom: 0;
+        }
+    }
+}
+
+.dl-index-jumbotron .dl-search-opts {
+    padding: 3px 6px 0 6px;
+    margin-left: -6px;
+    margin-top: 0;
+    @extend %smoked-glass;
+    @extend %border-rad-btm-sm;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    
+    .dl-adv-search {
+        padding-right: 3px;   
+    }
+}
+
+.dl-adv-search {
+    float: right;
+    @extend .dl-small-txt;
+    // font-size: 0.85em;
+
+    a {
+        color:white;
+
+        &:visited{
+            color:white;
+        }
+    }
+}
+
+.dl-srch-svg {
+    fill: $white;
+}
+
+/////////////
+// EMBEDDED & COLLECTION LANDING PAGE
+/////////////
+
+.dl-srch-area-sm {
+    padding: 0 12px;
+    margin-left: -12px;
+}
+
+
+
+/////////////
+// ALT SEARCH BAR  (deprec)
+/////////////
+
+// $alt-srch-height: 28px;
+
+// .dl-altsrch {
+//     position: relative;
+//     width: 100%;
+//     form {
+//         margin-bottom: 0;
+//     }
+//     // margin-top: -10px;
+//     padding: 4px 15px;
+    
+//     margin-bottom: 1px;
+
+//     // border-top: 1px solid $gray5;
+//     // background: rgba($gray7, 0.65);
+//     // background: $gray6;
+
+//     .row-fluid {
+//         margin-top: 3px;
+//         margin-bottom: 3px;
+//     }
+
+//     @media #{$max-767} {
+//         padding: 4px 20px;
+//     }
+
+// }
+
+// .dl-altsrch-wrap {
+//     margin-bottom: 12px;
+//     position: relative;
+
+//     .dl-srch-drop {
+//         right: 4px;
+//         top: 32px;
+//     }
+
+// }
+
+// .dl-altsrch-input-cont {
+//     width:77%;
+//     display: inline-block;
+//     background-color: $gray1;
+//     padding: 0;
+//     border: 1px solid $white;
+//     height: $alt-srch-height;
+//     overflow: hidden;
+//     @extend %border-rad-l-sm;
+//     line-height: $alt-srch-height;
+//     vertical-align: middle;
+
+//     input {
+//         display: inline-block;
+//         height:$alt-srch-height;
+//         border: none;
+//         padding:2px 0 0 10px;
+//         font-size: 16px;
+
+//         width:100%;
+
+//         &:focus{
+//             border: none;
+//             box-shadow: none;
+//         }
+//     }
+// }
+
+// .dl-altsrch-btn-cont {
+//     position: relative;
+//     display: inline-block;
+//     vertical-align: middle;
+//     @extend %border-rad-r-sm;
+//     width: 22%;
+//     margin-left: -4px;
+//     height: $alt-srch-height +2px;
+// }
+
+// .dl-altsrch-btn {
+
+//     background-color: $gray2;
+//     border: 1px solid $white;
+//     color: $gray7;
+//     @extend .dl-bold;
+
+//     vertical-align: top;
+//     display: inline-block;
+//     height: 100%;
+//     width: 75%;
+//     margin-left: 0;
+
+//     &:hover, &:focus, &:focus {
+//         background-color: $white;
+//         color: $bblue;
+//         box-shadow: $gray2 0 0 0px 1px inset;
+//     }
+
+//     &:active {
+//         background-color: $white;
+//         color: $bblue;
+//         box-shadow: $gray2 0 0 2px 2px inset;
+//     }
+
+//     &:first-child {
+//         @media #{$max-568} { 
+//             width: 60%;
+//         }
+//     }
+
+//     &:last-child {
+//         margin-left: -4px;
+//             width: 25%;
+//             @extend %border-rad-r-sm;
+//             @media #{$max-767} {
+//                 width:25%;
+//             }
+//             @media #{$max-568} {
+//                 width: 40%;
+//             }
+//     }
+// }
+
+// a.dl-alt-browse-btn {
+//     @extend .dl-sbtn;
+//     height: $alt-srch-height -2px;
+//     line-height: $alt-srch-height;
+//     overflow: hidden;
+
+// }

@@ -1,0 +1,6 @@
+<ul class="dl-apifields">
+    <li ng-repeat='f in apiFields'>
+        <input id="{[{f.map}]}" type="checkbox" ng-model="f.selected" ng-change="updateApiData();">
+        <label for="{[{f.map}]}">{[{ f.label }]}</label>
+    </li>
+</ul>

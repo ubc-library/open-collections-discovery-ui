@@ -1,0 +1,28 @@
+.fourohfour {
+    .dl-call2action {
+        font-weight: 700;   
+    }
+    .rtnLink {
+        text-align: center; 
+        font-style: italic; 
+        color: #ffffff; 
+        font-size: 14px;
+        
+        a {
+            color: white; 
+            background-color: rgba(black, 0.4); 
+            border-radius:2px; 
+            padding: 8px 16px 10px;
+            
+            .fa-arrow-circle-left {
+                margin-right: 12px;   
+            }
+        }
+    }
+}
+.bg-danger {
+    background-color: #f2dede;
+    padding: 1em;
+    border: 1px solid grey;
+    text-align: center;
+}

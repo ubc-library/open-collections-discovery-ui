@@ -1,0 +1,72 @@
+
+<div ng-if="!max400" class="dl-r-lthumb dl-basic-thumb"
+	basic-thumb 
+	img-width="200"
+	item-id="{[{ r._id }]}"
+	repo="{[{ r.repo }]}"
+	handle="{[{ r.repo }]}.{[{ r.nick }]}.{[{ r._id }]}"
+	item-title="{[{ r.title }]}" 
+	type="{[{ r.type }]}"
+	col-nick="{[{ r.nick }]}">
+</div>
+
+<div class="dl-r-save-result" ng-class="{saved: r.saved}" ng-click="saveResult(r)">
+</div>
+<article class="dl-r-content" ng-hide="!r.itemLink">
+	<span class="dl-r-type-icon {[{ ::r.type | lowercase }]}"></span>
+
+	<h6><a link-out ng-href="{[{::base_url }]}/{[{ ::r.itemLink }]}" class="dl-r-title" ng-bind-html="::r.title"></a>
+	</h6>
+
+	<div class="dl-r-metadata-short">
+
+		<a ng-href="{[{::base_url }]}/{[{ ::r.collectionLink }]}" link-out ng-hide="hr.collection" class="dl-r-collection" ng-bind-html="::r.collection"></a>
+
+		<br />
+
+		<span ng-repeat="c in ::r.creator track by $index">
+			<a href="" ng-click="addFilter('creator', r.creator[$index])" class="dl-r-creator" ng-bind-html="c"></a>{[{$last ? '' : '; '}]}
+		</span>
+		<span class="dl-r-creator" ng-if="!r.creator[0]" >[creator unknown]</span>  
+
+		<!-- <a href="" ng-click="addFilter('sortDate', r.sortDate)" class="dl-r-date" ng-bind-html="::r.sortDate"></a> -->
+		&ensp;&mdash;&ensp;<span class="dl-r-date" ng-bind-html="::r.sortDate"></span>
+		<br />
+
+		<span ng-if="r.embargoed" class="dl-small-txt"><b>Embargoed</b>: Access by request only.</span>
+
+	</div>
+								
+	<table class="dl-r-metadata-table" ng-if="details">
+
+		<tr ng-repeat="d in ::r.detail" >
+			<td class="dl-r-label">{[{d.label}]}</td>
+			<td class="dl-r-data">
+				<span ng-repeat="dd in ::d.val track by $index" >
+					<a ng-if="d.facetField" href="" ng-click="addFilter(d.field, dd)" ng-bind-html="dd"></a>
+					<span ng-if="!d.facetField" ng-bind-html="dd"></span>
+					{[{$last ? '' : ', '}]}
+				</span>
+			</td>
+		</tr>
+
+		<tr ng-if="!r.embargoed && r.description && r.description != '[unknown]'">
+
+			<td class="dl-r-label">Description</td>
+			<td class="dl-r-data" ng-bind-html="::r.description"></td>
+		</tr> 
+	</table>
+	<div class="dl-r-inner row-fluid" ng-if="r.compound && details">
+		<span ng-hide="innerContent"><div class="dl-loader-inline"></div>Loading page-level results...</span>
+		<inner-results data="innerContent" class="row-fluid" ng-if="innerContent" >
+		</inner-results>
+	</div>
+
+	<!-- <button class="dl-sbtn-xsm">Show Details</button> -->
+	<button ng-click="toggleDetails()" class="dl-sbtn-xsm dl-small-txt dl-no-visited dl-r-more" ng-hide="detailView"> 
+		<span ng-hide="!details">- Hide </span>
+		<span ng-hide="details">+ Show </span>
+		Details
+	</button>
+	
+</article>

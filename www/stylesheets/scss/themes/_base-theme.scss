@@ -1,0 +1,208 @@
+/********
+  BASE THEME
+*********/
+
+//for testing
+
+.red {  // used for testing
+	background-color:red;
+}
+
+
+// BACKGROUND FILLS
+
+// base
+.dl-thm-base {
+	background-color: $white;
+}
+
+.dl-srch-grad {
+	background: #002145; /* Old browsers */
+	background: -moz-linear-gradient(top,  #002145 15%, #002c5b 85%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(15%,#002145), color-stop(85%,#002c5b)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #002145 15%,#002c5b 85%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #002145 15%,#002c5b 85%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #002145 15%,#002c5b 85%); /* IE10+ */
+	background: linear-gradient(to bottom,  #002145 15%,#002c5b 85%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002145', endColorstr='#002c5b',GradientType=0 ); /* IE6-9 */
+}
+
+.dl-thm-solid-base {
+	// background-color: $ubc-blue;
+	background: #002145; /* Old browsers */
+	background: -moz-linear-gradient(top,  #002145 15%, #002c5b 85%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(15%,#002145), color-stop(85%,#002c5b)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #002145 15%,#002c5b 85%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #002145 15%,#002c5b 85%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #002145 15%,#002c5b 85%); /* IE10+ */
+	background: linear-gradient(to bottom,  #002145 15%,#002c5b 85%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002145', endColorstr='#002c5b',GradientType=0 ); /* IE6-9 */
+	// background-color: $srch-bg;
+	p, h1, h2, h3, h4, h5, h6 {
+		color: $white;
+	}
+}
+
+.dl-btm-space {
+    background-color: white;
+    height: 30px;
+}
+
+.dl-thm-plain-base {
+    background-color: #002145;
+}
+
+.dl-thm-light-base {
+    background-color: $gray2;
+	background-image: url('../../img/textures/ticks/ticks.png');
+	background-repeat: repeat;
+}
+
+.dl-thm-extralight-base {
+	background-color: $gray0;
+}
+
+// Featured Header
+
+.dl-fh {
+    @extend .libserif;
+    font-style: italic;
+    vertical-align: center;
+
+}
+.libfeatured {
+    font-family: $feature-font;   
+}
+.dl-fh-title {
+    text-align: center;
+    color: $white;
+    font-family: $feature-font; 
+    font-weight: 400; 
+    padding: 10px 0px;
+    @media #{$max-568} {
+        font-size: 26px;
+    }
+}
+.dl-fh-stripe {
+    height: 1px; 
+    width: 100%; 
+    margin-top: 1px;
+}
+.dl-jumbotron-stripe {
+    background-color: rgba(0,0,0,0.4);
+    @extend .dl-spaced-lrg;
+}
+.dl-fh-featured {
+	@extend .libserif;
+	font-style: italic;
+    display: inline-block;
+    margin-top: 13px;
+}
+
+.dl-fh-icon {
+    height: 36px;
+    line-height: 36px;
+    margin: 4px 15px 7px 0px;
+}
+
+// Featured Descriptions
+.dl-dataexplorer {
+    margin-bottom: 10px;   
+}
+.dl-description {
+    p:empty {
+        margin-bottom: 0px;   
+    }
+}
+.dl-description, .ns-popover-cannedsearch { 
+    ul {
+        list-style-type: none;
+        li:before {
+            font-family: 'FontAwesome';
+            content: '\f101';
+            margin: 0 10px 0 -15px;
+        }
+    }       
+}
+// SEPERATORS
+
+//base
+.dl-hr-top-base {
+	border-top: 1px solid $gray5;
+}
+.dl-hr-bottom-base {
+	border-bottom: 1px solid $gray5;
+}
+
+// Shapes
+.dl-uparrow-sm {
+	content: ' ';
+	width: 0;
+	height: 0;
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
+	border-bottom: 20px solid $gray1;
+}
+
+// spinner - in 'loading' component
+
+// @keyframes infinite-spin{
+// 	0% {
+//     transform: rotate(0deg);
+//   }
+//   	100% {
+//     transform: rotate(360deg);
+//   }
+// }
+
+// .dl-spinner {
+// 	display: inline-block;
+// 	margin-right: 12px;
+// 	height: 18px;
+// 	width: 20px;
+// 	border-radius: 50%;
+// 	border: 2px solid $bblue;
+// 	border-left: none;
+// 	border-right: none;
+// 	animation: infinite-spin 2s infinite linear;
+// }
+
+.collectionDownloadDiv {
+    padding-top: 10px;
+    border-top: 1px solid #e9e9eb;
+    
+    h5 {
+        font-weight: bold;   
+    }    
+    form.row-fluid {
+        margin-bottom: 0px;
+    }
+    
+    .collectionDownload {
+        width: 100%;   
+    }
+}
+
+.monthstats-coll {    
+    
+    margin-top: 10px;
+    
+    &.monthstats-border {
+        padding-top: 10px;
+        border-top: 1px solid #e9e9eb;
+    }
+    
+    table {
+        width: 100%;
+        text-align: center;
+        
+        td {
+            padding: 5px;  
+            background-color: white;
+        }
+        tbody tr :first-child {
+            background-color: $gray0;
+        }
+    }
+        
+}

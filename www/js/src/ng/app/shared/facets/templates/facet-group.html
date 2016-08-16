@@ -1,0 +1,127 @@
+<span ng-switch on="ff.label">
+    <span ng-switch-when="sortDate">
+        <dt>
+            <a href="" ng-click="toggle()" class="dl-f-activator">
+                <i class="fa fa-angle-down" ng-hide="!isOpen"></i> <i class="fa fa-angle-right" ng-hide="isOpen"></i> {[{::ff.display | capitalize}]}
+            </a>
+            <button class="dl-f-clear dl-sbtn-xsm" 
+                    ng-if="selected"
+                    ng-click="clearFilterGroup()">Clear</button>
+        </dt>
+        <dl class="dl-f-selected" data-sCount="0">
+            <dd ng-if="selected" ><a href="" ng-click="clearFilterGroup();">{[{selected}]}</a></dd>
+        
+        </dl>
+        <dl class="dl-f-options dl-ani-hide" ng-hide="!isOpen">
+            <div class="row-fluid">
+                <datechart class="row-fluid dl-datechart" 
+                            data="ff.buckets" 
+                            selection="ff.selection" 
+                            class="date-chart" 
+                            style="width: 100%;" 
+                            on-click="addDateFilter(start, end)">
+                </datechart>
+            </div>
+            <!-- date input in templates/date-input.html -->
+            <date-input class="dl-f-date-input-wrap"></date-input> 
+            <div class="row-fluid">
+                <button class="dl-sbtn-sm dl-f-apply-btn dl-center" ng-click="dateRangeFilter(ff.selection.begin, ff.selection.end);">Apply Filter</button>
+            </div>
+        </dl>
+    </span>
+
+    <span ng-switch-when="collection">
+        <dt>
+            <a href="" ng-click="toggle()" class="dl-f-activator">
+                <i class="fa fa-angle-down" ng-hide="!isOpen"></i> <i class="fa fa-angle-right" ng-hide="isOpen"></i> {[{::ff.display | capitalize}]}
+            </a>
+            <button class="dl-f-clear dl-sbtn-xsm" 
+                    ng-hide="!activeFilters.length > 0"
+                    ng-click="clearFilterGroup()">Clear</button>
+        </dt>
+        <dl class="dl-f-selected" data-sCount="0">
+            <dd ng-repeat="a in activeFilterTitles"><a href="" ng-click="removeFilter(activeFilters[$index])">{[{::a}]}</a></dd>
+        </dl>
+        <div class="dl-f-expand">
+            <dl class="dl-f-options dl-ani-hide" ng-hide="!isOpen">
+                <div class="dl-f-sort" ng-hide="ff.buckets.length < 2">
+                    <div class="alpha" ng-click="sortBy('title')" ng-class="{current : orderField === 'title'}">
+                        <i ng-hide="trackReverse.title" class="fa fa-caret-down"></i>
+                        <i ng-hide="!trackReverse.title" class="fa fa-caret-up"></i>
+                    </div> 
+                    <div class="num" ng-click="sortBy('doc_count')" ng-class="{current : orderField === 'doc_count'}">
+                        <i ng-hide="!trackReverse.doc_count" class="fa fa-caret-down"></i>
+                        <i ng-hide="trackReverse.doc_count" class="fa fa-caret-up"></i>
+                    </div>
+                </div>
+                <dd ng-repeat="t in ff.buckets | orderBy : orderField : trackReverse[orderField] track by $index"
+                    ng-hide="isFiltered(t.key)"
+                    >
+                    <a href="" ng-click="addFilter(t.key, t.title)">{[{t.title}]}
+                        <span class="count">{[{t.doc_count}]}</span>
+                    </a>
+                </dd>
+
+                <button class="dl-sbtn-xsm dl-f-more" 
+                           ng-hide="moreBtn!=true|| isOpen!=true"
+                           ng-click="loadMore()"
+                           >Load More</button>
+
+            </dl>
+             
+        </div>
+    </span>
+
+    <span ng-switch-default>
+        <dt>
+            <a href="" ng-click="toggle()" class="dl-f-activator">
+                <i class="fa fa-angle-down" ng-hide="!isOpen"></i> <i class="fa fa-angle-right" ng-hide="isOpen"></i> {[{::ff.display | capitalize}]}
+                <span ng-show="optsLoading" class="dl-loader-inline"></span>
+            </a>
+            <button class="dl-f-clear dl-sbtn-xsm" 
+                    ng-hide="!activeFilters.length > 0"
+                    ng-click="clearFilterGroup()">Clear</button>
+
+        </dt>
+        <dl class="dl-f-selected" data-sCount="0">
+            <dd ng-repeat="a in activeFilters"><a href="" ng-click="removeFilter(a)">{[{::a}]}</a></dd>
+        </dl>
+        <div class="dl-f-expand">
+            <div class="dl-f-sort dl-ani-hide" ng-hide="ff.buckets.length < 2 || !isOpen">
+                <div class="alpha" ng-click="sortBy('key')" ng-class="{current : orderField === 'key'}">
+                    <i ng-hide="trackReverse.key" class="fa fa-caret-down"></i>
+                    <i ng-hide="!trackReverse.key" class="fa fa-caret-up"></i>
+                </div> 
+                <div class="num" ng-click="sortBy('doc_count')" ng-class="{current : orderField === 'doc_count'}">
+                    <i ng-hide="!trackReverse.doc_count" class="fa fa-caret-down"></i>
+                    <i ng-hide="trackReverse.doc_count" class="fa fa-caret-up"></i>
+                </div>
+            </div>
+            <dl class="dl-f-options dl-ani-hide" ng-hide="!isOpen">
+                
+                
+
+                <dd ng-repeat="t in ff.buckets | orderBy : orderField : trackReverse[orderField] track by $index"
+                    ng-hide="isFiltered(t.key)"
+                    >
+                    <a href="" ng-click="addFilter(t.key)">{[{t.key}]}
+                        <span class="count">{[{t.doc_count}]}</span>
+                    </a>
+                </dd>
+
+                
+                <button class="dl-sbtn-xsm dl-f-more" 
+                        ng-hide="moreBtn!=true|| isOpen!=true"
+                        ng-click="loadMore()"
+                        >Load More</button>
+
+            </dl>
+<!--             <button class="dl-sbtn-xsm dl-f-more" 
+                    ng-hide="isOpen!=true || ff.buckets.length < 20"
+                    ng-class="{showAll:showAll===true}"
+                    ng-click="toggleShowAll()"
+                    >Show <span ng-hide="showAll">More</span> <span ng-hide="!showAll">Less</span></button> -->
+            
+        </div>
+    </span>
+</span>

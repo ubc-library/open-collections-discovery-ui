@@ -1,0 +1,61 @@
+///////////////////
+// RESULTS: THUMBNAIL VIEW
+///////////////////
+
+#dl-r-thumbsview {
+  // background-color: red;
+  // padding: 0 0 0 1%;
+  position: relative;
+  // padding-bottom: 50px;
+  height: auto;
+  min-width: 100%;
+
+  .pagination {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+  }
+}
+
+.dl-r-thumbview {
+  margin: 0 auto;
+  display: inline-block;
+  position: relative;
+  height: 162px;
+  width: 162px;
+  // min-width: 15%;
+
+  overflow: hidden;
+  vertical-align: middle;
+  margin: 6px;
+  border: 2px solid white;
+
+  @include transition-property(border-color);
+  @include transition-duration(0.4s);
+
+  img {
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  &:hover {
+    border: 2px solid $bblue;
+  }
+
+  @media #{$max-1200} {
+    width: 149px;
+  }
+  // @media #{$break-1200} {
+  //  width: 162px;
+  // }
+}
+
+img.dl-thumb {
+  min-height: 15px;
+  min-width: 30px;
+  background: url('../../img/ajax-loader.gif') center no-repeat;
+}

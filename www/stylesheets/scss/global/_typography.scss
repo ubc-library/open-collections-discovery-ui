@@ -1,0 +1,271 @@
+// @font-face {
+//   font-family: 'FontAwesome';
+//   src: url('http://dev-sl.library.ubc.ca/dl/stylesheets/Font-Awesome/font/fontawesome-webfont.eot?v=3.0.1');
+//   src: url('http://dev-sl.library.ubc.ca/dl/stylesheets/Font-Awesome/font/fontawesome-webfont.eot?#iefix&v=3.0.1') format('embedded-opentype'),
+//     // url('http://dev-sl.library.ubc.ca/dl/stylesheets/Font-Awesome/font/fontawesome-webfont.woff?v=3.0.1') format('woff'),
+//     url('http://dev-sl.library.ubc.ca/dl/stylesheets/Font-Awesome/font/fontawesome-webfont.ttf?v=4.1.0') format('ttf');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
+.dl-fa {
+  font-family: 'FontAwesome';
+}
+
+.dl-highlighted {
+  background-color: yellow;
+}
+
+// move to link?
+// @import url(//fonts.googleapis.com/css?family=Monda:400,700);
+
+$smallfont: 'Nobile', sans-serif;
+
+// Base Font sizing
+$base-font-size: 14px;
+$base-line-height: 20px;
+//@include establish-baseline;
+
+/////////
+//TYPOGRAPHIC PATTERNS
+/////////
+
+%dl-small-txt {
+  font-family: $smallfont;
+  //@include adjust-font-size-to(12px);
+  font-size: 12px;
+  @media #{$ipad-and-smaller} {
+    // font-size: 13px;
+    //@include adjust-font-size-to(13px);
+    font-size: 13px;
+  }
+
+}
+
+%dl-label {
+  //@include adjust-font-size-to(11px);
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+%hanging-indent1 {
+}
+
+%hoverlink {
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+%blacklink {
+  a {
+    color: #000;
+    &:visited {
+      color: #000;
+    }
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+%ubc-blue-link {
+  a {
+    color: $ubc-blue;
+    &:visited {
+      color: $ubc-blue;
+    }
+    &:hover {
+      color: $ubc-blue;
+    }
+  }
+}
+
+%no-visited {
+  &:visited {
+    color: $linkblue;
+  }
+}
+
+%dl-orangelink { // insert at <a>
+  a, a:visted, a:hover, a:active {
+    color: $orange;
+  }
+}
+
+%dl-whitelink { // insert at <a>
+  a, a:visted, a:hover, a:active {
+    color: $white;
+  }
+}
+
+%dropcap {
+  &:first-child:first-letter {
+    float: left;
+    font-size: 3em;
+    line-height: 1em;
+    padding-top: 0;
+    padding-right: 6px;
+    padding-left: 2px;
+    font-family: Georgia;
+  }
+}
+
+// TYPOGRAPHIC STYLES
+
+.dl {
+  @extend .libsanserif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialias;
+  font-smoothing: antialias;
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    font-weight: 400;
+  }
+
+  a {
+    color: $linkblue;
+    text-decoration: none;
+    &:hover {
+      color: $linkblue;
+      text-decoration: underline;
+    }
+    &:visited {
+      color: $linkpurple;
+    }
+  }
+
+  tr {
+    //@include adjust-font-size-to(13px);
+    font-size: 13px;
+  }
+
+  tr:nth-child(odd) {
+    background-color: $gray0;
+
+  }
+
+  .dl-bold {
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .dl-monospace {
+    font-family: monospace;
+  }
+
+}
+
+.libsanserif {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica-Light", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+.libserif {
+  font-family: prettyAmp, Georgia, Times, "Times New Roman", serif;
+}
+
+.libmonospace {
+  font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;
+}
+
+.dl-subhead {
+  p, h1, h2, h3, h4, h5, h6 {
+    @extend .dl;
+    color: black;
+    text-align: center;
+    padding: 0.5em 0;
+    margin-bottom: 0;
+    display: block;
+  }
+}
+
+.dl-header {
+  h1, h2, h3, h4, h5, h6 {
+    @extend .dl;
+    color: $white;
+    text-align: center;
+    padding: 0.5em 0;
+    margin-bottom: 0;
+    display: block;
+
+    a, a:visited {
+      color: $white;
+      text-decoration: none;
+    }
+  }
+}
+
+.dl-small-txt {
+  @extend %dl-small-txt;
+  //@include rhythm(0, 0.1, 0.1, 0.0, 11px);
+  font-size: 12px;
+}
+
+
+.dl-minilink {
+  @extend %dl-small-txt;
+  a, a:visited, a:hover, a:active {
+    font-weight: bold;
+    color: $bblue;
+  }
+}
+
+a:visited.dl-no-visited {
+  color: $bblue;
+}
+
+.dl-caps { // use as extend in themes
+  text-transform: uppercase;
+}
+
+.dl-label-sm {
+  @extend .dl-small-txt;
+  @extend .dl-caps;
+  @extend .dl-bold;
+}
+
+//forms & labels
+label {
+  //@include adjust-font-size-to(15px);
+  font-size: 15px;
+  display: block;
+  padding-left: 15px;
+  text-indent: -15px;
+}
+
+input {
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  margin: 0;
+  vertical-align: bottom;
+  position: relative;
+  top: -1px;
+  *overflow: hidden;
+}
+
+.dl-txt-center {
+  text-align: center;
+}
+
+.dl-txt-right {
+  text-align: right;
+}
+
+/* override clf breadcrumb resizing */
+.breadcrumb {
+  font-size: 11px !important;
+}
+
+.copycursor {
+  cursor: text !important;
+}
+
+// navigation / facets
+
+         

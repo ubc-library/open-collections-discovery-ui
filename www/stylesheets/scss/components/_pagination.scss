@@ -1,0 +1,39 @@
+.dl-pagination {
+    margin-top: 0;
+    margin-bottom:3px;
+    font-size: 1.2em;
+    width: auto;
+
+    ul li {
+        display: inline;
+        list-style-type: none;
+        padding: 4px;
+    }
+
+    button, a.dl-sbtn {
+        display: inline-block;
+        width: 40px;
+        font-size: 20px;
+        padding: 3px 0;
+    }
+
+    .disabled button, .disabled button:hover {
+        cursor: default;
+        background: $gray0;
+        color: $gray3;
+    }
+
+    a:hover {
+        background-image: none;
+        background: none;
+        background-color: $bblue;
+        color: $white;
+    }
+    select {
+        height: 28px;
+        font-size: 14px;
+        line-height: 14px;
+        margin: 0;
+        width: auto;
+    }
+}

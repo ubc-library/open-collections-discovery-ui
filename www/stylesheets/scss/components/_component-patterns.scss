@@ -1,0 +1,310 @@
+// COMPONENT & UTILITY PATTERNS & MIXINS
+
+//THEME PATTERNS & PLACEHOLDERS & MIXINS
+// @import 'compass/css3';
+// @import 'compass/utilities';
+
+//VARS
+
+
+
+//PATTERNS
+
+%centered {
+	margin-right:auto;
+	margin-left:auto;
+}
+
+%column-width-responsive {
+	width: 100%;
+	margin-left: -20px !important;
+	@media #{$break-979} {
+		width: 970px;
+		margin-left: -15px !important;
+	}
+	@media #{$break-1200} {
+		width: 1200px;
+		margin-left: -15px !important;
+	}
+}
+
+%bottomless{  // hack for extending elements to full height: REQUIRES overflow: hidden on parent.
+	// no longer needed?
+	margin-bottom: -99999px;
+	padding-bottom: 99999px;
+}
+
+//get rid of gutter in bootstrap grid
+.dl-no-gutter {
+	margin-left: 0 !important;
+}
+
+%borderbox {
+	box-sizing: border-box;
+}
+
+// ANIMATED ELEMENT HIGHLIGHT
+// keyframes for highlighting selected content
+@keyframes highlightintro {
+	0% {background-color: orange;}
+	100% {background-color: #f8c466;}
+}
+
+
+%ani-highlight-orange {
+	animation: highlightintro 300ms 1;
+	background-color: #f8c466;
+}
+
+
+// HOVER LIST
+
+%dl-hover-li {
+	// background: $gray0;
+	border-bottom: 1px dashed $gray1;
+	a,a:visited,a:active,a:hover {
+			color: black;
+			display: block;
+			text-decoration: none;
+		}
+	&:hover, &:focus {
+		background-color: $gray1;
+		border-bottom-style: solid;
+			a {
+				color:black;
+			}
+		}
+    
+        &:nth-last-child(1) {
+            border-bottom-style: none;  
+        }
+}
+
+// SELECTION LIST (FACETS)
+
+%selectiongroup {
+	background: $offwhite;
+	border: 1px solid $gray2;
+	margin: 12px 0;
+	@extend %border-rad-sm;
+	padding-bottom:2px;
+
+}
+
+// FONT AWESOME ICONS
+
+%fa-check {
+	line-height: 2em;
+	// color: $green;
+	font-family: FontAwesome;
+	font-size: 0.8em;
+	padding-right:4px;
+	// content: "\f046"; // fa-check-square-o
+	// content: "\f14a";  // fa-check-square
+	// content: "\f058"; // fa-check-circle
+	content: '\f00c';  // fa-check
+}
+%fa-remove {
+	padding-right:6px;
+	content: '\f00d';
+}
+
+// TYPE ICONS
+
+%icon-image {
+	font-family: FontAwesome;
+	content: '\f03e';  
+	// content: '\f1c8';
+}
+
+%icon-text {
+	font-family: FontAwesome;
+	content: '\f0f6';  // fa-icon-text-o
+	font-size: 1.2em;
+}
+
+%icon-video {
+	font-family: FontAwesome;
+	content: '\f03d';  
+}
+
+%icon-sound {
+	font-family: FontAwesome;
+	content: '\f028';  
+}
+
+%icon-journal {
+	font-family: FontAwesome;
+	content: '\f19d';  // fa-graduation-cap
+	content: '\f15c';  // alternative could be fa-file-text (solid)
+}
+
+%icon-dataset {
+	font-family: FontAwesome;
+	content: '\f080';  
+}
+
+%icon-thesis {
+	font-family: FontAwesome;
+	content: '\f19d';  // fa-graduation-cap
+}
+
+%icon-interactive {
+	font-family: FontAwesome;
+	content: '\f1c9';  // fa-file-code-o
+}
+
+// folder icons
+
+%fa-folder {
+	font-family: FontAwesome;
+	content: "\f07b";
+}
+
+%fa-folder-o {
+	font-family: FontAwesome;
+	content: "\f114";
+}
+
+%fa-minus {
+	font-family: FontAwesome;
+	content: "\f068";
+}
+
+
+
+
+
+
+
+//Transparency styles
+
+%blue-glass {
+	background-color: $ubc-blue3;  // solid for IE8-
+	background-color: rgba($ubc-blue, 0.45);
+}
+
+%smoked-glass {  // deprecates to transparent
+	background-color: rgba(black, 0.4);
+}
+
+%limo-tint {  // deprecates to black
+	background-color: black;
+	background-color: rgba(black, 0.65);
+}
+
+%frosted-glass {  // deprecates to transparent
+	background-color: rgba(white, 0.9);
+}
+
+
+
+//border-radius
+
+%border-rad-none {
+	border-radius: 0px;
+}
+
+%border-rad-sm {
+	border-radius: 3px;
+}
+
+%border-rad-l-sm {
+	border-left-radius: 3px;
+}
+
+%border-rad-r-sm {
+	border-right-radius: 3px;
+}
+
+%border-rad-btm-sm {
+	border-bottom-radius: 3px;
+}
+
+%border-rad-med {
+	border-radius: 6px;
+}
+
+%border-rad-l-med {
+	border-left-radius: 6px;
+}
+
+%border-rad-r-med {
+	border-right-radius: 6px;
+}
+
+%border-rad-t-med {
+	border-top-radius: 6px;
+}
+
+%border-rad-lrg {
+	border-radius: 9px;
+}
+
+%border-rad-l-lrg {
+	border-left-radius: 9px;
+}
+
+%border-rad-r-lrg {
+	border-right-radius: 9px;
+}
+
+
+//shadows
+// for reference:inset x-offset, y-offset, blur radius, spread radius, color
+%shadow-sm {
+	box-shadow: 0 1px 10px 1px rgba($gray7, .2);
+	// box-shadow:  0 1px 4px rgba($gray7, .25;
+}
+
+%shadow-sm-r {
+	box-shadow: 10px 0 10px -8px rgba($gray7, .2);
+}
+
+%shadow-sm-dn {
+	box-shadow: 0 10px 10px -6px rgba($gray7, .2);
+}
+
+%shadow-sm-in {
+	box-shadow: inset 0 1px 10px 1px rgba($gray7, .2);
+	// box-shadow:  0 1px 4px rgba($gray7, .25;
+}
+
+%shadow-med {
+	box-shadow: 0 2px 20px 2px rgba($gray7, .2);
+}
+
+%shadow-med-in {
+	box-shadow: inset 0 2px 20px 2px rgba($gray7, .2);
+}
+
+%shadow-blue-highlight {
+	box-shadow: 5px 5px 5px rgba($ubc-blue3, .35);
+}
+
+%shadow-gray-highlight {
+	box-shadow: 1px 2px 4px 4px rgba($gray3, .35);
+}
+
+%shadow-med-r {
+	box-shadow: 4px 0 20px -2px rgba($gray5, .35);
+}
+
+
+// rollover styles
+%menu-rollover {
+	border-bottom:1px solid $ubc-blue;
+	text-decoration: none;
+}
+
+//Breaks & Rules
+
+%break-above {
+	border-top: 1px solid $gray5;
+}
+
+// cursors
+%link-cursor, .dl-target {
+	cursor: pointer;
+	cursor: hand;
+}

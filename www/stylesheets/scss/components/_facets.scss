@@ -1,0 +1,304 @@
+/////////////
+// FACETS 
+/////////////
+
+.dl-facets {
+    padding: 0 6px;
+     box-sizing: border-box;
+
+
+    dl {
+        margin-bottom:0;
+        padding:0;
+        -webkit-margin-before: 0;
+        -webkit-margin-after: 0;
+
+        dt {
+            position:relative;
+            padding: 3px 5px 0px 9px;
+            margin-top: 1px;
+            margin-bottom: 1px;
+            line-height: 2em;
+
+            a, a:visited, a:active,a:hover{
+            display:block;
+            color:black;
+            text-decoration: none;
+            }
+
+            a:hover {
+                // text-decoration: underline;
+            }
+
+            button {
+                position: absolute;
+                right: 3px;
+                top: 3px;
+            }
+        }
+
+        dd {
+            margin: 1px 0;
+            padding: 0 5px;
+            line-height: 2em;
+            
+            &:hover, &:focus, &:focus {
+                background-color: $gray1;
+            }
+
+            a, a:visited, a:active,a:hover{
+            display:block;
+            color:black;
+            text-decoration: none;
+            }
+        }               
+    }
+    
+
+    .dl-f-group {
+
+        background: $offwhite;
+        border-top: 1px solid $gray2;
+        margin: 12px 0;
+        font-size: 0.92em;
+        padding-bottom: 2px;
+
+        dl {
+
+            &.dl-f-selected {
+                dd{
+                    position: relative;
+                    color: black;
+                    // animated entrance
+                    
+                    @extend %ani-highlight-orange;
+
+                    .count {
+                        display:none;
+                        color: black;
+                    }
+                    a, a:visited, a:active{
+                        color: black;
+                    }
+                    
+                    a:before{
+                        @extend %fa-check;
+                        color: $green;
+
+                    }
+                    a:hover {
+                        color:black;
+                    }
+                    a:hover:before {
+                        @extend %fa-remove;
+                        color: red;
+                    }
+                }
+            }
+
+            &.dl-f-options {
+                max-height: 451px;
+                background-color: $gray0;
+                border-top: 1px solid $gray2;
+                //border-bottom: 1px solid $gray2;
+                overflow-y: auto;
+                overflow-x: hidden;
+                width: 100%;
+
+                dd {
+                    padding-left: 11px;
+                    padding-right: 20px;
+                    position: relative;
+                    .count {
+                        color: $bblue;
+                    }
+
+                    &:first-letter {
+                        margin-left: -6px;
+                    }
+                }
+            }
+        }
+    }
+
+    .dl-f-group-2-column {
+        @extend .dl-f-group;
+
+        margin: 3px;
+    }
+
+    .dl-f-current {
+        box-shadow:  0px 0px 1px 1px rgba(0,0,0, 0.3);
+    }
+    
+    .count {
+        // float: right;
+        font-size: 0.88em;
+        position:absolute;
+        right:6px;
+        top: 0;
+        display: inline-block;
+    }
+
+    .dl-f-more {
+        width: 80%;
+        margin:2px 10% 3px 10%;
+    }
+
+
+    .dl-f-sort {
+        height: 18px;
+        line-height: 18px;
+        width: 100%;
+        text-align: right;
+        @extend %borderbox;
+        background: $white;
+        // border-top: 1px solid $gray1;
+        // border-bottom: 1px solid $gray1;
+        color: $gray5;
+        .num {
+            text-align: right;
+            padding-right: 12px;
+            height: 18px;
+            line-height: 18px;
+            display: inline-block;
+            width: 70px;
+            transition: color 0.6s;
+        }
+        .num.current {
+            color: black;
+        }
+        .num:hover {
+            cursor:pointer;
+            // background: $gray1;
+            color: $bblue;
+        }
+        
+        .alpha {
+            @extend .num;
+            border-right: 1px solid $gray0;
+        }
+    }
+    .fa.fa-angle-right {
+        margin-right: 4px;
+    }
+    .fa.fa-angle-down {
+        margin-right: 1px;
+    }
+}
+
+
+// IE HACK TO FIX SPACING
+@media all and (-ms-high-contrast:none){
+    .dl-facets .dl-f-group {  // gets IE 10
+        padding-bottom: 0;
+    }
+
+    *::-ms-backdrop, .dl-facets .dl-f-group {
+        padding-bottom: 0;  // gets IE 11
+    }
+}
+
+
+
+.dl-facet-opts {
+    background-color: $gray0;
+    margin-bottom: 9px;
+    border: 1px solid $gray0;
+
+    .opts-top {
+        @extend .dl-small-txt;
+        color: $gray9;
+        display: block;
+        width: 100%;
+        margin-bottom: 0;
+        background-color: $gray1;
+        text-indent: 3px;
+
+        i {
+            color: $gray7;
+            float: right;
+            margin-right: 3px;
+            font-size: 18px;
+
+            &:hover {
+                color: $bblue;
+                cursor: pointer;
+            }
+        }
+
+    }
+    .opts-help {
+        @extend .dl-small-txt;
+        border-top: 2px solid $gray0;
+        background-color: $gray1;
+        p {
+            color: $gray9;
+            margin: 3px;
+        }
+    }
+
+    label {
+        @extend .dl-small-txt;
+        margin-left: 9px;
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 16px;
+    }
+
+    input {
+        margin-right: 8px;
+    }
+    .btns {
+        margin: 6px 3px 3px 3px;
+        button{
+            width: 48%;
+            display: inline-block;
+
+        }
+    }
+
+}
+
+// date facet classes
+.dl-f-date-input-wrap {
+    max-width: 265px;
+    text-align: center;
+    font-weight: bold;
+    display: block;
+    margin: 0 auto;
+}
+
+.dl-f-date-input {
+    width: 100px;
+    font-size: 0.7em;
+    margin: 0 3px;
+    text-align: center;
+
+}
+
+.dl-f-apply-btn {
+    width: 80%;
+    margin-bottom: 6px;
+    max-width: 213px;
+}
+
+.dl-datechart {
+    g.tick text{
+        font-size: 10px;
+    }
+    .brush {
+        shape-rendering : crispEdges;
+        .extent {
+            fill: none;
+            fill-opacity: .125;
+        }
+    }
+
+    .brushbg {
+        .bbg {
+            fill: black;
+            fill-opacity: .125;
+        }
+    }
+}

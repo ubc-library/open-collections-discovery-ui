@@ -1,0 +1,15 @@
+
+
+    <div class="dl-rich-thumb-inner">
+
+           <img class="dl-thumb" ng-src="{[{ src }]}" alt="{[{ title }]} thumbnail" ng-hide="noThumb"/>
+            <span class="dl-thumb-type-icon {[{ type | lowercase }]}" ng-if="noThumb"></span>
+            <div class="dl-rt-inner-bottom" ng-bind="title | limitTo:50"></div>
+
+        <ng-transclude></ng-transclude>
+
+    </div>
+
+
+
+    <!-- <span class="dl-r-type-icon {[{r.type[0] | lowercase }]}"></span> -->

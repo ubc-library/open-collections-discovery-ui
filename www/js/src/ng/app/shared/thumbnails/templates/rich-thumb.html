@@ -1,0 +1,10 @@
+<h4 class="ng-hide">{[{ title }]}</h4>
+<div class="dl-rich-thumb-inner">
+    <a ng-href="{[{ ::itemLink }]}" link-out> 
+        <img class="dl-thumb" ng-src="{[{ ::src }]}" alt="{[{ ::title }]} thumbnail" ng-hide="noThumb"/>
+        <span class="dl-thumb-type-icon {[{ ::type | lowercase }]}" ng-show="noThumb"></span>
+        <div ng-if="htmlTitle" class="dl-rt-inner-bottom" ng-bind-html="::htmlTitle"> <span class="ellipsis">&#133;</span></div>
+        <div ng-if="!htmlTitle"class="dl-rt-inner-bottom" ng-bind="::title"> <span class="ellipsis">&#133;</span></div>
+    </a>
+    <ng-transclude></ng-transclude>
+</div>

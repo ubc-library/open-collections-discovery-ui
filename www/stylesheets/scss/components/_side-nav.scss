@@ -1,0 +1,121 @@
+//////////////////////
+// LEFT-SIDE NAV BAR
+//////////////////////
+// vars in 'global vars' scss
+
+#cols-wrap {
+  width: 100%;
+  min-height: 900px;
+  height: 100%;
+  z-index: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+#col-nav {
+  box-sizing: border-box;
+  position: absolute;
+  border-right: 1px solid $gray3;
+  width: $navwidth;
+  left: 0;
+  height: 100%;
+  min-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  @extend .dl-thm-light-base;
+
+  h4 {
+    margin-top: 28px;
+    color: black;
+    text-align: center;
+  }
+
+  @media #{$sidebar-max}{
+    // transform: translateX(-$navwidth);
+    left: -270px;
+  }
+}
+
+#col-results {
+  position: relative;
+  padding-top: 0;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 40px;
+  margin-left: $navwidth;
+  width: auto;
+
+  @media #{$sidebar-max} {
+    padding-top: 20px;
+    margin-left: 0;
+    padding-left: 10px;
+  }
+
+  @media screen and (max-width: 525px) {
+    min-width: 220px;
+  }
+
+  .r-col {
+    min-height: 900px;
+  }
+}
+
+.hide-filters {
+  display: none;
+}
+
+// sidebar-in added when sidebar is present. (added by 'sidebar' plugin in dl-jquery.js)
+
+.sidebar-in #nav-toggle {
+  .hide-filters {
+    display: block;
+  }
+  .show-filters {
+    display: none;
+  }
+
+  @media #{$sidebar-max} {
+    transform: translateX(-165px);
+  }
+}
+
+.sidebar-in .dl-pagination, .sidebar-in .dl-r-opt {
+  // @media #{$sidebar-max} {
+  //     display: none;
+  // }
+}
+
+// show /hide btn
+.dl-r-col-btn {
+
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+  margin-top: 3px;
+
+  z-index: 200;
+  @extend %borderbox;
+  margin-left: 0;
+  width: 22%;
+  min-width: 160px;
+  // margin: 3px 0 -8px;
+
+  transform: translateX(0);
+  transition: transform 300ms;
+
+  @media #{$sidebar-break} {
+    display: none;
+  }
+  i {
+    position: absolute;
+    top: 3px;
+    left: 10px;
+    font-size: 18px;
+  }
+}
+
+
+    
+
+    

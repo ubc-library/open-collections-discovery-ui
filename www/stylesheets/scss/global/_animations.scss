@@ -1,0 +1,105 @@
+/////////////////////
+// ANGULAR ANIMATIONS
+////////////////////
+
+// fade in / out (on results most prominently)
+.ng-fade-out.ng-hide-add, 
+.ng-fade-in.ng-hide-remove, 
+.ng-fade-in.ng-enter, 
+.ng-fade-out.ng-leave {
+    /* ensure visibility during the transition */
+    display: block !important; /* yes, important */
+}
+
+.ng-fade-out.ng-hide, 
+.ng-fade-in.ng-hide, 
+.ng-fade-in.ng-enter, 
+.ng-fade-out.ng-leave {
+    opacity: 0 !important;
+}
+
+.ng-fade-in{
+    transition: opacity ease-out .2s;
+    opacity: 1;
+}
+
+.ng-fade-out{
+    transition: opacity ease-in 0.2s;
+    opacity: 1;
+}
+
+// transition height (for list containers)
+// NOT WORKING.
+
+//.dl-ani-hide {
+//    transition: height ease-in 2s;
+//}
+//
+//.dl-ani-hide.ng-hide{
+//    max-height: 0 !important;
+//    height: 0 !important;
+//}
+//.dl-ani-hide.ng-hide-remove {
+//    display: block;
+//    max-height: 450px;
+//}
+//.dl-ani-hide {
+//    display: block;
+//    max-height: 450px;
+//    transition: height 1s ease-in, max-height 1s ease-in;
+//}
+
+// list add / remove animation
+
+// .ng-shrink-in, .ng-shrink-out {
+//     transition: max-height linear .3s;
+// }
+
+// .ng-shrink-in.ng-move, .ng-shrink-in.ng-move {
+//     transition: all linear .3s
+// }
+
+// .ng-shrink-in.ng-enter, 
+// .ng-shrink-out.ng-leave,
+// .ng-shrink-in.ng-move,
+// .ng-shink-out.ng-move {
+//     display: block !important;
+// }
+
+// .ng-shrink-in.ng-enter,
+// .shrink-in.ng-move, .ng-shrink-out.ng-move,
+// .ng-shrink-out.ng-leave.ng-leave-active{
+//     max-height: 0;
+// }
+
+// .ng-shrink-in.ng-enter-active, 
+// .ng-shrink-out.ng-leave{
+//     max-height: 100px;
+// }
+
+
+// .ng-anilist-enter, .ng-anilist-leave {
+//  -webkit-transition: all linear 200ms;
+//  transition: all linear 200ms;
+//  display: block !important;
+// }
+// .ng-anilist-leave.ng-anilist-leave-active,
+// .ng-anilist-enter {
+//      -webkit-transform: scaleY(0);
+//     -moz-transform: scaleY(0);
+//     -ms-transform: scaleY(0);
+//     -o-transform: scaleY(0);
+//     transform: scaleY(0);
+//  height: 0px;
+//  opacity: 0;
+// }
+// .ng-anilist-leave.ng-anilist-leave-active,
+// .ng-anilist-enter {
+//  -webkit-transform: scaleY(1);
+//     -moz-transform: scaleY(1);
+//     -ms-transform: scaleY(1);
+//     -o-transform: scaleY(1);
+//     transform: scaleY(1);
+//  height: 30px;
+//  opacity: 1;
+// }

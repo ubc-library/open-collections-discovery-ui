@@ -1,0 +1,42 @@
+<link href="/stylesheets/css/print-saved.css" media="print" rel="stylesheet" type="text/css" />
+<h3>Stashed Items</h3>
+
+<div class="dl-result row-fluid" ng-repeat="r in list">
+    <!-- thumbnails not resolving fast enough to print.
+        <div class="dl-r-lthumb dl-basic-thumb" 
+            basic-thumb 
+            img-width="200"
+            item-id="{[{ r._id }]}"
+            repo="{[{ r.repo }]}"
+            handle="{[{ ::r.handle }]}"
+            item-title="{[{ ::r.title }]}" 
+            type="{[{ ::r.type }]}" 
+            col-nick="{[{ ::r.nick }]}">
+        </div> -->
+        <div class="dl-r-content">
+            
+
+            <span class="dl-r-title">{[{r.title}]}</span>
+
+            <table class="dl-r-metadata-table">
+                <tr>
+                    <td class="dl-r-label">Collection: </td>
+                    <td class="dl-r-data">
+                       <span class="dl-r-collection">{[{r.collection}]}</span>
+                    </td>
+                </tr>
+                 <tr>
+                    <td class="dl-r-label">Date</td>
+                    <td class="dl-r-data dl-r-date">{[{r.date}]}</td>
+                </tr>
+                <tr>
+                    <td class="dl-r-label">URL</td>
+                    <td class="dl-r-data dl-r-date">{[{ r.link_item }]}</td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
+
+    

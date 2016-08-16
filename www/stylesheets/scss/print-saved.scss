@@ -1,0 +1,42 @@
+/* Welcome to Compass. Use this file to define print styles.
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" /> */
+
+
+/////////////////////
+// PRINT STYLES
+////////////////////
+
+img {
+   max-width: 100% !important;
+}
+
+.dl-result {
+    width: 100%;
+    page-break-inside: avoid;
+    clear: both;
+    margin-bottom: 0.6cm;
+}
+
+.dl-r-lthumb {
+    float: left;
+    width: 10%;
+    height: inherit; 
+}
+
+.dl-r-content {
+
+    margin-left: 12%;
+}
+
+.ng-hide {
+    display: none;
+}
+
+.dl-r-title {
+    font-weight: bold;
+}
+
+.dl-r-metadata-table {
+    font-size: 0.9em;
+}

@@ -1,0 +1,30 @@
+<section class="r-col" ng-switch on="resultsView.index">
+    <h3 class="ng-hide">Search Results</h3>
+  <div class="dl-results ng-fade-out ng-fade-in" ng-switch-when="0" ng-hide="rUpdating || noTerms || total===0">
+    <div results-list ng-repeat="r in esr.results" class="dl-result row-fluid" ng-controller="resultController"></div>
+  </div>
+  <div class="dl-results ng-fade-out ng-fade-in" ng-switch-when="1" ng-hide="rUpdating || noTerms || total===0">
+    <div results-list ng-repeat="r in esr.results" class="dl-result row-fluid" ng-controller="resultController"></div>
+  </div>
+  <div ng-switch-when="2" class="ng-fade-out ng-fade-in" ng-hide="rUpdating || noTerms || total===0">
+
+        <!-- NOTE: don't put these spans on a new line - it creates spaces that break the layout -->
+        <span ng-repeat="r in esr.results" ng-controller="resultController" class="ng-thumb-wrapper" ><span
+          
+                class="dl-rich-thumb"
+                rich-thumb 
+                img-width="324" 
+                item-id="{[{ r._id }]}"
+                repo="{[{ r.repo }]}"
+                handle="{[{ r.repo }]}.{[{ r.nick }]}.{[{ r._id }]}"
+                html-title="{[{ r.title[0] }]}" 
+                type="{[{ r.type }]}" re
+                col-nick="{[{ r.nick }]}">
+                
+
+                <div class="dl-rt-inner-top"></div>
+                <div class="dl-r-save-result" ng-class="{saved: r.saved}" ng-click="saveResult(r)"></div>
+                
+        </span></span>
+  </div>
+</section>

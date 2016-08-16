@@ -1,0 +1,162 @@
+// classes to modify structural elements
+
+.dl-expand {
+	margin-right: -15px;
+	margin-left: -15px;
+}
+
+.dl-h100 {
+	height: 100%;
+}
+
+.dl-w100 {
+	width: 100%;
+}
+
+.dl-no-overflow {
+	overflow: hidden;
+}
+
+.dl-left {
+	float: left;
+}
+
+.dl-right {
+	float: right;
+}
+
+.dl-spaced {
+	margin-top:3em;
+	margin-bottom:3em;
+}
+
+.dl-spaced-xsm {
+	margin-top:1em;
+	margin-bottom:1em;
+}
+
+.dl-spaced-sm {
+	margin-top:2em;
+	margin-bottom:2em;
+}
+
+.dl-spaced-lrg {
+	margin-top:6em;
+	margin-bottom:6em;
+}
+
+.dl-space-xsm {
+	margin-bottom: 1em;
+}
+
+.dl-space-sm {
+	margin-bottom: 2em;
+}
+
+.dl-space-med {
+	margin-bottom: 3em;
+}
+
+.dl-space {
+	margin-bottom: 5em;
+}
+
+.dl-space-lrg {
+	margin-top: 6em;
+}
+
+.dl-space-x2 {
+	margin-bottom: 10em;
+}
+
+.dl-space-x3 {
+	margin-bottom: 15em;
+}
+
+.dl-full-w {
+	width: 100%;
+}
+
+.dl-full-h {
+	height: 100%;
+}
+
+.dl-center {
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.dl-pad-10 {
+	padding: 10px;
+	margin-left: -10px;
+	margin-right: -10px;
+}
+
+.dl-resp-top-60 {
+	@media #{$max-767} {
+	   margin-top: 60px;
+	}
+}
+
+.dl-middle {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);  
+}
+
+.dl-reset{
+    /* http://meyerweb.com/eric/tools/css/reset/ 
+       v2.0 | 20110126
+       License: none (public domain)
+    */
+
+    html, body, div, span, applet, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    a, abbr, acronym, address, big, cite, code,
+    del, dfn, em, img, ins, kbd, q, s, samp,
+    small, strike, strong, sub, sup, tt, var,
+    b, u, i, center,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, embed, 
+    figure, figcaption, footer, header, hgroup, 
+    menu, nav, output, ruby, section, summary,
+    time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+    }
+    /* HTML5 display-role reset for older browsers */
+    article, aside, details, figcaption, figure, 
+    footer, header, hgroup, menu, nav, section {
+        display: block;
+    }
+    body {
+        line-height: 1;
+    }
+    ol, ul {
+        list-style: none;
+    }
+    blockquote, q {
+        quotes: none;
+    }
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+        content: '';
+        content: none;
+    }
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+}
+
+.rss-icon.fa-stack {
+    margin: 0px 7px 0px -2px;
+}
+
