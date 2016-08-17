@@ -16,7 +16,32 @@
 @import "animations";
 
 
-// BASE STYLES & CLF Overrides
+// CLF Replacement Styles for Discovery-UI
+input {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+input[type='text'] {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  display: inline-block;
+  height: 24px;
+  padding: 4px 6px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #555;
+  vertical-align: top;
+  font-weight: normal;
+}
+
+select {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  display: inline-block;
+  color: #555;
+  vertical-align: middle;
+  font-size: 1em;
+}
 
 
 //Body

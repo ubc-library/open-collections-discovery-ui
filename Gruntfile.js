@@ -49,7 +49,7 @@ module.exports = function (grunt) {
         watch       : {
             scripts: {
                 files: ['www/js/src/**/*.js', 'www/js/src/**/*.html', 'www/viewer/*.js'],
-                tasks: ['requirejs:dev', 'uglify', 'sass'],
+                tasks: ['requirejs:dev', 'uglify', 'sass', 'autoprefixer'],
                 options: {
                     spawn: false
                 }
