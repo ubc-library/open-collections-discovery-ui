@@ -13,7 +13,6 @@ define(function(require) {
     require('moreless');
     var angular = require('angular'),
         services = require('services/services'),
-        mask = require('jqMask'),
         dlD3charts = require('d3datechart'),
         dlFilters = require('filters'),
         dlAnimations = require('animations'),

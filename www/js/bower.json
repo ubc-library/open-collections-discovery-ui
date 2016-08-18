@@ -23,7 +23,6 @@
   "dependencies": {
     "d3": "~3.4.13",
     "enquire": "~2.1.2",
-    "jQuery-Mask-Plugin": "~1.10.12",
     "elasticsearch": "~2.2.0",
     "velocity": "latest",
     "jquery-touchswipe": "~1.6.5",

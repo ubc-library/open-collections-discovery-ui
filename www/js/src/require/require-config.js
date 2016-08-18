@@ -30,7 +30,6 @@ requirejs.config({
         "hammer": "vendor/hammerjs/hammer",
         "fastclick": "vendor/fastclick/lib/fastclick",
         "jquery": "vendor/jquery/dist/jquery.min",
-        "jqMask": "vendor/jQuery-Mask-Plugin/dist/jquery.mask.min",
         "jqueryui": "vendor/jquery-ui/jquery-ui.min",
         "flipcards": "jq/flipcards",
         "moreless": "jq/moreless",
@@ -92,10 +91,6 @@ requirejs.config({
         "velocity": {
             "deps" : ["jquery"],
             "exports" : "velocity"
-        },
-        "jqMask": {
-            "deps": ["jquery"],
-            "exports": "jqMask"
         },
         "jqueryui": {
             "deps": ["jquery"],
