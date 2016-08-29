@@ -117,14 +117,6 @@ requirejs.config({
           "deps":["hammer"],
           "exports": "hammerDefine"
         },
-        "viewer": {
-            "deps": [
-                "hammerDefine",
-                "jqueryui",
-                "velocity"
-            ],
-            "exports": "viewer"
-        },
         "googlefont" : {
             "exports": "googlefont"
         }

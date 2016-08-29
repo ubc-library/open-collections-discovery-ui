@@ -7,7 +7,7 @@ define(function (require) {
     var templatePath = js_base_url + "ng/app/results/templates/";
 
     // ----- requireJS dependencies ------ //
-    require('moreless');
+    require('jquery', 'moreless');
     var angular = require('angular'),
         ngRoute = require('ngRoute'),
         ngAnimate = require('ngAnimate'),
