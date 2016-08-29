@@ -39,7 +39,8 @@ requirejs.config({
         "pluginDetect": "pluginDetect",
         "fastclickInit": "fastclick-init",
         "hammerDefine": "require/window/hammer",
-        "googlefont": "jq/googlefont"
+        "googlefont": "jq/googlefont",
+        "licenses": "require/licenses"
     },
     "shim": {
         "angular": {
@@ -82,6 +83,7 @@ requirejs.config({
             "exports": "ngCsv"
         },
         "d3": {
+            "deps" : ["licenses/d3-license"],
             "exports": "d3"
         },
         "jquery": {

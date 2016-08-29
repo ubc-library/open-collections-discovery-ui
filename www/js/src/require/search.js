@@ -1,5 +1,5 @@
 // Start the main app logic.
-require(['results/resultsApp', 'jquery', 'sidebar', 'fastclickInit'],
+require(['results/resultsApp', 'jquery', 'sidebar', 'fastclickInit', 'licenses/ubc-license'],
     function(resultsApp) {
         // enable sidebar
         $('#cols-wrap').sidebar({});  // include empty object to use default settings.
