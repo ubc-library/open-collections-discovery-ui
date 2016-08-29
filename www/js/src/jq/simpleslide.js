@@ -1,4 +1,4 @@
-;(function($){
+define(["jquery", "velocity"], function($, velocity){
     $.fn.simpleSlide = function(btn){
 
         var el = $(this),
@@ -40,4 +40,4 @@
         }
         
     }
-}(jQuery));
+});

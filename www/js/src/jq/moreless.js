@@ -1,4 +1,5 @@
-;(function($){ 
+define(["jquery"],
+    function($){
     $.fn.moreLess = function(options){
 
         var opts = $.extend({
@@ -151,4 +152,4 @@
         o.addClass('hidden');
     }
 
-}(jQuery));
+});

@@ -2,8 +2,6 @@ var excludedModules = [
     'jquery'
 ];
 
-var ocasci = String("%c .88888.                                           a88888b.          dP dP                     dP   oo \nd8'   `8b                                         d8'   `88          88 88                     88 \n88     88 88d888b. .d8888b. 88d888b.              88        .d8888b. 88 88 .d8888b. .d8888b. d8888P dP .d8888b. 88d888b. .d8888b. \n88     88 88'  `88 88ooood8 88'  `88              88        88'  `88 88 88 88ooood8 88'  `\"\"   88   88 88'  `88 88'  `88 Y8ooooo. \nY8.   .8P 88.  .88 88.  ... 88    88              Y8.   .88 88.  .88 88 88 88.  ... 88.  ...   88   88 88.  .88 88    88       88 \n `8888P'  88Y888P' `88888P' dP    dP               Y88888P' `88888P' dP dP `88888P' `88888P'   dP   dP `88888P' dP    dP `88888P' \n          88\n          dP\n", "color:blue;");
-
 // create unique time-based hash for cache-busting
 // keep the prefix so it is coerced to a string.
 var cacheDate = '-' + (new Date()).getTime();
@@ -49,7 +47,7 @@ module.exports = function (grunt) {
         watch       : {
             scripts: {
                 files: ['www/js/src/**/*.js', 'www/js/src/**/*.html', 'www/viewer/*.js'],
-                tasks: ['requirejs:dev', 'uglify', 'sass', 'autoprefixer'],
+                tasks: ['requirejs:dev', 'uglify', 'sass'],
                 options: {
                     spawn: false
                 }
@@ -68,7 +66,7 @@ module.exports = function (grunt) {
                 skipModuleInsertion: true,
                 skipDirOptimize    : true,
                 paths              : {
-                    // jquery  : 'empty:',
+                    jquery  : 'empty:',
                     vendor  : 'empty:',
                     citeproc: 'empty:',
                     sharethis: 'empty:',
@@ -89,11 +87,10 @@ module.exports = function (grunt) {
                     dir                : 'www/js/build/',
                     keepBuildDir          : false,
                     paths              : {
-                        // jquery  : 'empty:',
+                        jquery  : 'empty:',
                         vendor  : 'empty:',
                         citeproc: 'empty:',
                         sharethis: 'empty:',
-                        viewer: '../../viewer/viewer'
                     },
                     modules            : [
                         {
@@ -114,8 +111,6 @@ module.exports = function (grunt) {
             
             embed: {
                 files: {
-                    'www/viewer/viewer.min.js': ['www/viewer/viewer.js' ],
-                    'www/js/build/embed/item.js': ['www/js/build/embed/item.js'],
                     'www/js/build/embed/search.js': ['www/js/build/embed/search.js']
                 }
             },

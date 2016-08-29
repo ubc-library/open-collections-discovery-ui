@@ -39,7 +39,6 @@ requirejs.config({
         "pluginDetect": "pluginDetect",
         "fastclickInit": "fastclick-init",
         "hammerDefine": "require/window/hammer",
-        "nspopover":  "vendor/nsPopover/src/nsPopover",
         "googlefont": "jq/googlefont"
     },
     "shim": {
@@ -123,9 +122,6 @@ requirejs.config({
                 "velocity"
             ],
             "exports": "viewer"
-        },
-        "nspopover" : {
-            "deps": ["angular"]
         },
         "googlefont" : {
             "exports": "googlefont"

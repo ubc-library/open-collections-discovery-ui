@@ -4,9 +4,7 @@
 // Tickets: DL-126
 
 // requires jQuery, VelocityJS, EnquireJS, HammerJS
-//Hammer = require('hammer');
-
-;(function($){
+define(["jquery"], function($){
 
     $.fn.extend({
         sidebar: function(options,arg) {
@@ -210,4 +208,4 @@
             }
         }
     }
-}(jQuery));
+});
