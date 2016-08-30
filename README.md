@@ -1,6 +1,6 @@
 # UBC Library Open Collections - Discovery UI Component
 
-This project is a fork of the discovery layer from UBC Library's Open Collections project. The search results and discovery component has been extracted for use in other projects. Templates have been modified to depend on vanilla bootstrap classes rather than UBC-CLF styles.
+This project is a fork of the discovery layer from UBC Library's Open Collections project. The search results and discovery component has been extracted for use in other projects. Functionality is equivalent to the Open Collections [search results](https://open.library.ubc.ca/search?q=fruit&circle=n) page, but templates have been modified to depend on vanilla bootstrap classes rather than UBC-CLF styles, and some data has been shimmed to allow it to function with the OC [public API](https://open.library.ubc.ca/research) as the sole data source.
 
 
 ## Usage
