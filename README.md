@@ -13,13 +13,13 @@ clone into new repo
 
 `www/js/bower install` to install js dependencies
 
-`grunt dev` to build dev files
+`grunt dev` to build dev files (see `Gruntfile.js` for more actions)
 
-see `Gruntfile.js` for watch/uat/prod actions
+register for an API key at https://open.library.ubc.ca/research and replace the existing (rate-limited) example key in `www/js/config-vars.js`
 
 ### Dev
 
-To view the application, run a local server and open `www/html/discovery-ui.html`. This file contains the base template for the search results UI.
+To view the application, run a local server and open `www/html/discovery-ui.html`. This file contains the base template for the search results UI (Tip: in OSX you can use open a terminal at the `www` directory and use `python -m SimpleHTTPServer` to start a simple server).
 
 #### JavaScript (Angular) App
 
