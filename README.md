@@ -1,26 +1,51 @@
 # UBC Library Open Collections - Discovery UI Component
 
-This project is a fork of the discovery layer from UBC Library's Open Collections project. The search results and discovery component has been extracted for use in other projects. Templates have been modified to depend on vanilla bootstrap classes rather than UBC-CLF styles.
+This project is a fork of the discovery layer from UBC Library's Open Collections project. The search results and discovery component has been extracted for use in other projects. Functionality is equivalent to the Open Collections [search results](https://open.library.ubc.ca/search?q=fruit&circle=n) page, but templates have been modified to depend on vanilla bootstrap classes rather than UBC-CLF styles, and some data has been shimmed to allow it to function with the OC [public API](https://open.library.ubc.ca/research) as the sole data source.
 
 
 ## Usage
+
+### Setup
+
 clone into new repo
 
 `npm install` to install build packages
 
 `www/js/bower install` to install js dependencies
 
-`grunt dev` to build dev files
+`grunt dev` to build dev files (see `Gruntfile.js` for more actions)
 
-see Gruntfile.js for watch/uat/prod actions
+register for an API key at https://open.library.ubc.ca/research and replace the existing (rate-limited) example key in `www/js/config-vars.js`
+
+### Dev
+
+To view the application, run a local server and open `www/html/discovery-ui.html`. This file contains the base template for the search results UI (Tip: in OSX you can use open a terminal at the `www` directory and use `python -m SimpleHTTPServer` to start a simple server).
+
+#### JavaScript (Angular) App
+
+The discovery layer is primarily an Angular 1.x application that includes a main application and controller in `www/js/src/ng/app/results/resultsApp.js`. The app relies on a number of shared components and services. Of particular note are `www/js/src/ng/app/shared/services/searchString.js` and `esSearch.js` as these create and execute the elasticsearch API query, respectively. They will likely need to be modified or replaced in order for the UI to function with other applications. 
+
+All JavaScript dependencies are defined and loaded using require.js, see `require-config.js` for details.
+
+#### Stylesheets (SCSS)
+
+Styles are compiled from SCSS files using lib-sass. All CSS files are generated and should never be modified directly!
+
+Use `grunt watch` from the root directory to watch for changes and to compile SCSS and JavaScript files.
+
+### Build
+
+Use `grunt prod` to create a compressed production build.
 
 
 ## Notes
+
 This application is designed to interface with the Open Collections ElasticSearch API and data model.
 Only data accessible through the OC Public API can be accessed through this standalone version of the UI. Some other required data sources have been shimmed to allow the app to function (ie. collection data service), but all UI elements may not function as expected (ie. save/export results).
 
 
 ## License
+
 UBC Library Open Collections: A digital repository aggregator and discovery layer
 
 Copyright (c) 2016 The University of British Columbia
