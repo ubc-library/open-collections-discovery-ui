@@ -17,6 +17,7 @@ define(function (require) {
         searchString.filterCount = 0;
         searchString.keepFilters = true;
         searchString.filters = {};
+        searchString.filterExecution = 'and';
         // just search circle?
         searchString.dspOnly = "n";  // string values y/n are easier to deal with the radio btns
 
@@ -469,7 +470,7 @@ define(function (require) {
                 }
             }
         };
-        
+
         // BUILD SORT OBJ (fieldSevice.fields must be loaded)
         // takes field and order as input, returns valid ES sort obj.
         // defaults (or use 'false') to _score/desc (relevance)
@@ -544,7 +545,7 @@ define(function (require) {
                             newFilter.terms[field] = [];
                         } else {
                             newFilter.terms[field] = filterVars[i].terms;
-                            newFilter.terms.execution = 'or';
+                            newFilter.terms.execution = searchString.filterExecution;
                         }
                         // console.log('newfilter', newFilter);
                         filters.push(newFilter);

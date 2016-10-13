@@ -115,18 +115,18 @@ define(function (require) {
                     $scope.pageRange = [0];
                     //view options
                     $scope.rViewOptions = [{
-                            "index": 0,
-                            "label": "List view",
-                            "perPage": 20
-                        }, {
-                            "index": 1,
-                            "label": "Detailed view",
-                            "perPage": 20
-                        }, {
-                            "index": 2,
-                            "label": "Thumbnail view",
-                            "perPage": 60
-                        }];
+                        "index": 0,
+                        "label": "List view",
+                        "perPage": 20
+                    }, {
+                        "index": 1,
+                        "label": "Detailed view",
+                        "perPage": 20
+                    }, {
+                        "index": 2,
+                        "label": "Thumbnail view",
+                        "perPage": 60
+                    }];
                     //sort options
                     $scope.rSortOptions = [{
                         "index": 0,
@@ -289,6 +289,11 @@ define(function (require) {
                     //update filter count
                     searchString.updateCount();
                     $scope.filterCount = searchString.filterCount;
+                    if(facetService.fBehavior === 'expand') {
+                        searchString.filterExecution = 'or';
+                    } else {
+                        searchString.filterExecution = 'and';
+                    }
                     // should facets fire?
                     if (searchCounter === 0 || $scope.q !== searchString.vars.query) {
                         $rootScope.facetsLoaded = false;
@@ -505,11 +510,9 @@ define(function (require) {
                       utility) {
 
                 var query = searchString.vars.query;
-
-                // will need to grab language from somewhere..
+                // language switchter tbd.
                 var language = 'en';
                 $scope.base_url = website_base_url;
-
                 // check view
                 // detailed view
                 // console.log($scope.resultsView.index)
@@ -560,10 +563,8 @@ define(function (require) {
                         // details object (filled below)
                         detail: {}
                     };
-
                     // add detail view fields for any fields not already added above, only if details visible
                     var detailsParsed = false;
-
                     function parseDetails() {
                         $scope.r.description = highlighter.highlight(source[rFields.description.map]);
                         for (var i = 0; i < hasFields.length; i++) {
