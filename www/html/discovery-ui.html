@@ -30,10 +30,14 @@
 <base href="/"/>
 <div class="dl expand" role="main">
     <div class="dl-masthead expand row-fluid">
+        <div class="language-select">
+            <a ng-click="changeLanguage('fr')">FR</a> | 
+            <a ng-click="changeLanguage('en')">EN</a>
+        </div>
         <h1 class="libserif">
-            Open Collections - Discovery UI
+            <span translate>MAINPAGE_HEADER</span>
         </h1>
-        <p>A standalone version of the <a href="open.library.ubc.ca" link-out>UBC Library Open Collections</a> search results UI.</p>
+        <p><span translate>MAINPAGE_DESCRIPTION</span></p>
         <p></p>
 
     </div>
@@ -42,6 +46,7 @@
         <div class="dl-srch-cont row-fluid">
             <div class="dl-search col-md-10 col-md-offset-1">
                 <form name="dl-search" ng-submit="newSearch()">
+                    <input id="dl-lang-input" type="hidden" name="lang" ng-model="language"/>
                     <input id="dl-srch-input" type="search" name="q" ng-model="terms" aria-label="Search Terms">
                     <button type="submit" value="search for terms" class="dl-search-btn" aria-label="Search">
                         <!-- magnifying glass svg -->
@@ -63,31 +68,7 @@
                         </g>
                     </svg>
                     </button>
-                    <div class="row-fluid dl-search-opts">
-                        <ul>
-                            <li><label title="Search all items in the Open Collections"><input type="radio"
-                                                                                               name="circle"
-                                                                                               value="n"
-                                                                                               ng-model="dspOnly"
-                                                                                               ng-change="dspChange();"/>
-                                Search All Content</label>
-                            </li>
-                            <li><label title="Search only items in cIRcle, UBC's instutional repository"><input
-                                    type="radio"
-                                    name="circle"
-                                    value="y"
-                                    ng-model="dspOnly"
-                                    ng-change="dspChange();"/>
-                                Search cIRcle Only</label>
-                            </li>
-                            <!-- <li>( ? )</li> -->
-                            <li class="dl-adv-search">
-                                <a ng-href="/search/advanced/" link-out class="break"
-                                   ga-event="results_page,advanced_search_link">Advanced Search
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                    <mainpage-search-options></mainpage-search-options>
                 </form>
             </div>
         </div>
@@ -100,7 +81,7 @@
             <div id="col-nav" class="dl-facets dl-thm-solid-base" ng-controller="facetsController">
                 <div class="dl-downarrow"></div>
                 <!-- facets column -->
-                <h4>Filter Results</h4>
+                <h4><span translate>FILTER_RESULTS</span></h4>
                 <facet-opts></facet-opts>
                 <div class="dl-ajax-loader ng-hide ng-fade-out" ng-show="!facetsLoaded">
                     <span class="dl-spinner"></span>
@@ -111,56 +92,7 @@
             <!-- end nav column -->
             <!-- results column -->
             <div id="col-results" class="expand">
-                <div id="nav-toggle" class="dl-r-col-btn dl-btn">
-                <span class="hide-filters">
-                    <i class="icon-double-angle-left"></i> Hide Filters
-                </span>
-                <span class="show-filters">
-                    <i class="icon-double-angle-right"></i>Show Filters
-                </span>
-                </div>
-                <div id="dl-r-ursearch">
-                    <span ng-if="rUpdating">Loading ...</span>
-                    <div class="dl-r-feedback ng-hide ng-fade-in" ng-hide="rUpdating || noTerms" ng-cloak>
-                        <strong ng-if="!lucky && total > 0">{[{total}]} result{[{total===1 ? '' : 's'}]} found.</strong>
-                        <strong ng-if="total === 0">No results found.</strong>
-                        <strong ng-if="lucky">Direct hit! Redirecting to item...</strong>
-
-                    <span sidebar-show class="dl-r-filters" ng-class="{'dl-applied-filters': filterCount}"
-                          ng-show="filterCount">
-                    {[{filterCount===0 ? 'No' : filterCount}]} filter{[{filterCount===1 ? '' : 's'}]} applied.
-                    </span>
-                    </div>
-                <span ng-hide="rUpdating || noTerms || total===0" class="ng-cloak ng-fade-in">
-
-                    <div class="dl-results-options">
-                        <ul id="dl-r-opts">
-                            <li class="dl-r-opt" id="dl-r-sort">
-
-                                <select ng-model="::rSort"
-                                        ng-options="(option.label | capitalize) for option in rSortOptions"
-                                        ng-change="updateSearch('sort')"
-                                        aria-label="Sort">
-                                </select>
-                            </li>
-                            <li class="dl-r-opt" id="dl-r-view">
-                                <select ng-model="::resultsView"
-                                        ng-options="(option.label | capitalize) for option in rViewOptions"
-                                        ng-change="updateSearch('view')"
-                                        aria-label="View">
-                                </select>
-                            </li>
-                            <li class="dl-r-opt">
-                                <saved-folder></saved-folder>
-                            </li>
-                        </ul>
-                    </div>
-                    <d3-one-bar data="typeData.buckets" title="type" container="#dl-r-ursearch" class="dl-one-bar"
-                                style="width: 100%;" pass-up="passUp(obj)"></d3-one-bar>
-                </span>
-                </div>
-                <div pagination class="clearfix" ng-hide="noTerms || total===0"></div>
-
+                <mainpage-results-header></mainpage-results-header>
 
                 <!--RESULTS-->
                 <noscript>

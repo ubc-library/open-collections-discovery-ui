@@ -1,4 +1,4 @@
-<p ng-hide="hidePages" class="dl-pages-count">{[{from}]} to {[{to}]} of {[{total}]}</p>
+<p ng-hide="hidePages" class="dl-pages-count">{[{from}]} {{ 'TO' | translate }} {[{to}]} {{ 'OF' | translate }} {[{total}]}</p>
 <div class="dl-pagination pull-right clearfix" ng-hide="noTerms || pages <= 1" ng-cloak>
     
     <ul>

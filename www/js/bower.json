@@ -25,6 +25,7 @@
     "enquire": "~2.1.2",
     "elasticsearch": "~2.2.0",
     "velocity": "latest",
+    "jquery": "latest",
     "jquery-touchswipe": "~1.6.5",
     "angularjs": "~1.3.2",
     "angular-animate": "~1.3.5",
@@ -40,7 +41,8 @@
     "fastclick": "~1.0.6",
     "hammerjs": "latest",
     "angular-aria": "1.3.x",
-    "inflection": "latest"
+    "inflection": "latest",
+    "angular-translate": "latest"
   },
   "resolutions": {
     "angular": "~1.3.x"

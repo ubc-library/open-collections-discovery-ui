@@ -1,0 +1,49 @@
+                <div id="nav-toggle" class="dl-r-col-btn dl-btn">
+                <span class="hide-filters">
+                    <i class="icon-double-angle-left"></i>{{ 'FILTERS_HIDE' | translate }}
+                </span>
+                <span class="show-filters">
+                    <i class="icon-double-angle-right"></i>{{ 'FILTERS_SHOW' | translate }}
+                </span>
+                </div>
+                <div id="dl-r-ursearch">
+                    <span ng-if="rUpdating">{{ 'RESULTS_LOADING' | translate }}...</span>
+                    <div class="dl-r-feedback ng-hide ng-fade-in" ng-hide="rUpdating || noTerms" ng-cloak>
+                        <strong ng-if="!lucky && total > 0">{[{total}]} {{ 'RESULT' | translate }}{[{total===1 ? '' : 's'}]} {{ 'FOUND' | translate }}.</strong>
+                        <strong ng-if="total === 0">{{ 'NO_RESULTS' | translate }}</strong>
+                        <strong ng-if="lucky">{{ 'REDIRECTING' | translate }}...</strong>
+
+                    <span sidebar-show class="dl-r-filters" ng-class="{'dl-applied-filters': filterCount}"
+                          ng-show="filterCount">
+                    {[{filterCount===0 ? 'No' : filterCount}]} {{ 'FILTER' | translate }}{[{filterCount===1 ? '' : 's'}]} {{ 'APPLIED' | translate }}.
+                    </span>
+                    </div>
+                <span ng-hide="rUpdating || noTerms || total===0" class="ng-cloak ng-fade-in">
+
+                    <div class="dl-results-options">
+                        <ul id="dl-r-opts">
+                            <li class="dl-r-opt" id="dl-r-sort">
+
+                                <select ng-model="::rSort"
+                                        ng-options="(option.label | capitalize) for option in rSortOptions"
+                                        ng-change="updateSearch('sort')"
+                                        aria-label="Sort">
+                                </select>
+                            </li>
+                            <li class="dl-r-opt" id="dl-r-view">
+                                <select ng-model="::resultsView"
+                                        ng-options="(option.label | capitalize) for option in rViewOptions"
+                                        ng-change="updateSearch('view')"
+                                        aria-label="View">
+                                </select>
+                            </li>
+                            <li class="dl-r-opt">
+                                <saved-folder></saved-folder>
+                            </li>
+                        </ul>
+                    </div>
+                    <d3-one-bar data="typeData.buckets" title="type" container="#dl-r-ursearch" class="dl-one-bar"
+                                style="width: 100%;" pass-up="passUp(obj)"></d3-one-bar>
+                </span>
+                </div>
+                <div pagination class="clearfix" ng-hide="noTerms || total===0"></div>

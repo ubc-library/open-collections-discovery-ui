@@ -1,5 +1,5 @@
 <section class="r-col" ng-switch on="resultsView.index">
-    <h3 class="ng-hide">Search Results</h3>
+    <h3 class="ng-hide">{{ 'SEARCH_RESULTS' | translate}}</h3>
   <div class="dl-results ng-fade-out ng-fade-in" ng-switch-when="0" ng-hide="rUpdating || noTerms || total===0">
     <div results-list ng-repeat="r in esr.results" class="dl-result row-fluid" ng-controller="resultController"></div>
   </div>

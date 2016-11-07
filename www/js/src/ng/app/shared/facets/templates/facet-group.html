@@ -2,11 +2,11 @@
     <span ng-switch-when="sortDate">
         <dt>
             <a href="" ng-click="toggle()" class="dl-f-activator">
-                <i class="fa fa-angle-down" ng-hide="!isOpen"></i> <i class="fa fa-angle-right" ng-hide="isOpen"></i> {[{::ff.display | capitalize}]}
+                <i class="fa fa-angle-down" ng-hide="!isOpen"></i> <i class="fa fa-angle-right" ng-hide="isOpen"></i> {[{::ff.display | uppercase | translate }]}
             </a>
             <button class="dl-f-clear dl-sbtn-xsm" 
                     ng-if="selected"
-                    ng-click="clearFilterGroup()">Clear</button>
+                    ng-click="clearFilterGroup()">{{ 'CLEAR' | translate }}</button>
         </dt>
         <dl class="dl-f-selected" data-sCount="0">
             <dd ng-if="selected" ><a href="" ng-click="clearFilterGroup();">{[{selected}]}</a></dd>
@@ -25,7 +25,7 @@
             <!-- date input in templates/date-input.html -->
             <date-input class="dl-f-date-input-wrap"></date-input> 
             <div class="row-fluid">
-                <button class="dl-sbtn-sm dl-f-apply-btn dl-center" ng-click="dateRangeFilter(ff.selection.begin, ff.selection.end);">Apply Filter</button>
+                <button class="dl-sbtn-sm dl-f-apply-btn dl-center" ng-click="dateRangeFilter(ff.selection.begin, ff.selection.end);">{{ 'FILTER_APPLY' | translate }}</button>
             </div>
         </dl>
     </span>
@@ -33,11 +33,11 @@
     <span ng-switch-when="collection">
         <dt>
             <a href="" ng-click="toggle()" class="dl-f-activator">
-                <i class="fa fa-angle-down" ng-hide="!isOpen"></i> <i class="fa fa-angle-right" ng-hide="isOpen"></i> {[{::ff.display | capitalize}]}
+                <i class="fa fa-angle-down" ng-hide="!isOpen"></i> <i class="fa fa-angle-right" ng-hide="isOpen"></i> {[{::ff.display | uppercase | translate }]}
             </a>
             <button class="dl-f-clear dl-sbtn-xsm" 
                     ng-hide="!activeFilters.length > 0"
-                    ng-click="clearFilterGroup()">Clear</button>
+                    ng-click="clearFilterGroup()">{{ 'CLEAR' | translate }}</button>
         </dt>
         <dl class="dl-f-selected" data-sCount="0">
             <dd ng-repeat="a in activeFilterTitles"><a href="" ng-click="removeFilter(activeFilters[$index])">{[{::a}]}</a></dd>
@@ -65,7 +65,7 @@
                 <button class="dl-sbtn-xsm dl-f-more" 
                            ng-hide="moreBtn!=true|| isOpen!=true"
                            ng-click="loadMore()"
-                           >Load More</button>
+                           >{{ 'LOAD_MORE' | translate }}</button>
 
             </dl>
              
@@ -75,12 +75,12 @@
     <span ng-switch-default>
         <dt>
             <a href="" ng-click="toggle()" class="dl-f-activator">
-                <i class="fa fa-angle-down" ng-hide="!isOpen"></i> <i class="fa fa-angle-right" ng-hide="isOpen"></i> {[{::ff.display | capitalize}]}
+                <i class="fa fa-angle-down" ng-hide="!isOpen"></i> <i class="fa fa-angle-right" ng-hide="isOpen"></i> {[{::ff.display | uppercase | translate }]}
                 <span ng-show="optsLoading" class="dl-loader-inline"></span>
             </a>
             <button class="dl-f-clear dl-sbtn-xsm" 
                     ng-hide="!activeFilters.length > 0"
-                    ng-click="clearFilterGroup()">Clear</button>
+                    ng-click="clearFilterGroup()">{{ 'CLEAR' | translate }}</button>
 
         </dt>
         <dl class="dl-f-selected" data-sCount="0">
@@ -113,7 +113,7 @@
                 <button class="dl-sbtn-xsm dl-f-more" 
                         ng-hide="moreBtn!=true|| isOpen!=true"
                         ng-click="loadMore()"
-                        >Load More</button>
+                        >{{ 'LOAD_MORE' | translate }}</button>
 
             </dl>
 <!--             <button class="dl-sbtn-xsm dl-f-more" 

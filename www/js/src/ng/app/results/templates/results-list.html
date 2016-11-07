@@ -27,20 +27,20 @@
 		<span ng-repeat="c in ::r.creator track by $index">
 			<a href="" ng-click="addFilter('creator', r.creator[$index])" class="dl-r-creator" ng-bind-html="c"></a>{[{$last ? '' : '; '}]}
 		</span>
-		<span class="dl-r-creator" ng-if="!r.creator[0]" >[creator unknown]</span>  
+		<span class="dl-r-creator" ng-if="!r.creator[0]" >[{{ 'ITEM_CREATOR_UNKNOWN' | translate }}]</span>  
 
 		<!-- <a href="" ng-click="addFilter('sortDate', r.sortDate)" class="dl-r-date" ng-bind-html="::r.sortDate"></a> -->
 		&ensp;&mdash;&ensp;<span class="dl-r-date" ng-bind-html="::r.sortDate"></span>
 		<br />
 
-		<span ng-if="r.embargoed" class="dl-small-txt"><b>Embargoed</b>: Access by request only.</span>
+		<span ng-if="r.embargoed" class="dl-small-txt">{{ 'ITEM_EMBARGOED' | translate }}</span>
 
 	</div>
 								
 	<table class="dl-r-metadata-table" ng-if="details">
 
 		<tr ng-repeat="d in ::r.detail" >
-			<td class="dl-r-label">{[{d.label}]}</td>
+			<td class="dl-r-label">{[{d.label | uppercase | translate }]}</td>
 			<td class="dl-r-data">
 				<span ng-repeat="dd in ::d.val track by $index" >
 					<a ng-if="d.facetField" href="" ng-click="addFilter(d.field, dd)" ng-bind-html="dd"></a>
@@ -52,21 +52,21 @@
 
 		<tr ng-if="!r.embargoed && r.description && r.description != '[unknown]'">
 
-			<td class="dl-r-label">Description</td>
+			<td class="dl-r-label">{{ 'ITEM_DESCRIPTION' | translate }}</td>
 			<td class="dl-r-data" ng-bind-html="::r.description"></td>
 		</tr> 
 	</table>
 	<div class="dl-r-inner row-fluid" ng-if="r.compound && details">
-		<span ng-hide="innerContent"><div class="dl-loader-inline"></div>Loading page-level results...</span>
+		<span ng-hide="innerContent"><div class="dl-loader-inline"></div>{{ 'RESULTS_LOADING' | translate }}</span>
 		<inner-results data="innerContent" class="row-fluid" ng-if="innerContent" >
 		</inner-results>
 	</div>
 
 	<!-- <button class="dl-sbtn-xsm">Show Details</button> -->
 	<button ng-click="toggleDetails()" class="dl-sbtn-xsm dl-small-txt dl-no-visited dl-r-more" ng-hide="detailView"> 
-		<span ng-hide="!details">- Hide </span>
-		<span ng-hide="details">+ Show </span>
-		Details
+		<span ng-hide="!details">{{ 'DETAILS_HIDE' | translate }}</span>
+		<span ng-hide="details">{{ 'DETAILS_SHOW' | translate }}</span>
+		{{ 'DETAILS' | translate }}
 	</button>
 	
 </article>
