@@ -1,0 +1,25 @@
+                    <div class="row-fluid dl-search-opts">
+                        <ul>
+                            <li><label title="Search all items in the Open Collections"><input type="radio"
+                                                                                               name="circle"
+                                                                                               value="n"
+                                                                                               ng-model="dspOnly"
+                                                                                               ng-change="dspChange();"/>
+                                {{ 'SEARCH_ALL' | translate }}</label>
+                            </li>
+                            <li><label title="Search only items in cIRcle, UBC's instutional repository"><input
+                                    type="radio"
+                                    name="circle"
+                                    value="y"
+                                    ng-model="dspOnly"
+                                    ng-change="dspChange();"/>
+                                {{ 'SEARCH_LIMITED' | translate }}</label>
+                            </li>
+                            <!-- <li>( ? )</li> -->
+                            <li class="dl-adv-search">
+                                <a ng-href="/search/advanced/" link-out class="break"
+                                   ga-event="results_page,advanced_search_link">{{ 'SEARCH_ADVANCED' | translate }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>

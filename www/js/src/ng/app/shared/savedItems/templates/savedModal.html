@@ -5,77 +5,70 @@
         
          <saved-folder></saved-folder>
 
-         <h3>Stashed Items</h3>
+         <h3 translate>STASH_MAIN_HEADER</h3>
     </div>
 
     <div class="dl-sf-itemswrap">
 
         <p class="dl-sf-noitems" ng-hide="items.length > 0">
-            <b>Your stash is empty!</b> Click the <i class="fa fa-folder-o"></i> (folder icon) to the right of a result to add it to your stash.
+            <b><span translate>STASH_IS_EMPTY</span></b> <span translate>STASH_IS_EMPTY_DESC</span>
         </p>
 
         <div class="dl-sf-itemslist" ng-hide="items.length === 0">
         
             <div class="dl-sf-actions">
                 <div class="row-fluid">
-                    <p>Stashed items are stored temporarily using cookies. If you would like to refer to them at a later date, you should email, download, or print your list.</p>
+                    <p translate>STASH_DESC</p>
                 </div>
                 <div class="row-fluid">
-                    <button class="dl-sbtn dl-sf-clear" ng-click="clearSaved();">Clear Stash</button>
-                     <button class="dl-btn" ng-click="emailForm()"><i class="fa fa-envelope-o"></i>Email</button>
-                     <button class="dl-btn" ng-csv="toCsv" filename="stashed-items.csv"><i class="fa fa-download"></i>Download</button>
-                     <button class="dl-btn" ng-click="toPrinter()"><i class="fa fa-print"></i>Print</button>
+                    <button class="dl-sbtn dl-sf-clear" ng-click="clearSaved();"><span translate>STASH_CLEAR</span></button>
+                     <button class="dl-btn" ng-click="emailForm()"><i class="fa fa-envelope-o"></i><span translate>STASH_ACTION_EMAIL</span></button>
+                     <button class="dl-btn" ng-csv="toCsv" filename="stashed-items.csv"><i class="fa fa-download"></i><span translate>STASH_ACTION_DOWNLOAD</span></button>
+                     <button class="dl-btn" ng-click="toPrinter()"><i class="fa fa-print"></i><span translate>STASH_ACTION_PRINT</span></button>
                 </div>
         
                 <form class="dl-sf-email row-fluid" ng-hide="!email">
                     <input type="email" ng-model="eData.email" required>
-                    <button type="submit" class="dl-btn" ng-click="toEmail(eData)"><i class="fa fa-envelope-o"></i>Send</button>
+                    <button type="submit" class="dl-btn" ng-click="toEmail(eData)"><i class="fa fa-envelope-o"></i><span translate>STASH_ACTION_EMAIL_SEND</span></button>
                 </form>
         
             </div>
 
             <div class="dl-success" ng-hide="!emailSuccess">
                 <a href="" ng-click="closeEmailSuccess()" title="close" class="close-success"><i class="fa fa-times"></i></a>
-                <p><i class="fa fa-success"></i>  <b>Success:</b> Your list of items has been emailed to the email address provided.</p>
+                <p><i class="fa fa-success"></i><span translate>STASH_ACTION_EMAIL_SUCCESS</span></p>
             </div>
-        
-<!--             <div class="dl-thm-extralight-base" ng-hide="!warning">
-                <a href="" ng-click="closeWarning()" title="close" class="close-warning"><i class="fa fa-times"></i></a>
-                <p><i class="fa fa-warning"></i>  <b>Note:</b>  </p>
-            </div> -->
         
             <div class="dl-result row-fluid" ng-repeat="r in items">
 
                 <div class="dl-r-lthumb dl-basic-thumb" 
                     basic-thumb 
-                    img-width="200"
+                    img-width="80"
                     item-id="{[{ r._id }]}"
                     repo="{[{ r.repo }]}"
                     handle="{[{ ::r.handle }]}"
                     item-title="{[{ ::r.title }]}" 
                     type="{[{ ::r.type }]}" 
-                    col-nick="{[{ ::r.nick }]}">
+                    col-nick="{[{ ::r.nick }]}"
+                    img-src="{[{ r.icon_url }]}">
                 </div>
         
                 <div class="dl-r-save-result" ng-class="{saved: r.saved}" ng-click="saveResult(r)">
                 </div>
                 <div class="dl-r-content">
-                    <span class="dl-r-type-icon {[{::r.type | lowercase }]}"></span>
+                    <!-- <span class="dl-r-type-icon {[{::r.type | lowercase }]}"></span> -->
         
         
                     <a href="{[{ ::r.link_item }]}" class="dl-r-title" link-out >{[{::r.title}]}</a>
         
                     <div class="dl-r-metadata-short">
         
-                        
-        
-                        
                         <a href="{[{ ::r.link_collection}]}" class="dl-r-collection" link-out>{[{::r.collection}]}</a>
         
                         <br />
                         <!-- add collection URL -->
                         <span ng-click="addFilter('creator', c)" class="dl-r-creator"  ng-repeat="c in ::r.creator track by $index" ng-bind="c"></span>
-                        <span class="dl-r-creator" ng-if="r.creator[0] === ''" >[unknown]</span>
+                        <span class="dl-r-creator" ng-if="r.creator[0] === ''" >[<span translate>CREATOR_UNKNOWN</span>]</span>
         
                         <span class="dl-r-date">{[{::r.sortDate}]}</span>
         

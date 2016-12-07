@@ -24,6 +24,7 @@ requirejs.config({
         "ngTouch": "vendor/angular-touch/angular-touch.min",
         "ngModal": "vendor/angular-modal-service/dst/angular-modal-service.min",
         "ngCsv": "vendor/ng-csv/build/ng-csv.min",
+        "pascalprecht.translate":"vendor/angular-translate/angular-translate.min",
         "d3": "vendor/d3/d3",
         "velocity": "vendor/velocity/velocity.min",
         "enquire": "vendor/enquire/dist/enquire.min",
@@ -81,6 +82,10 @@ requirejs.config({
         "ngCsv": {
             "deps": ["angular"],
             "exports": "ngCsv"
+        },
+        "pascalprecht.translate": {
+            "deps": ["angular"],
+            "exports": "pascalprecht.translate"
         },
         "d3": {
             "deps" : ["licenses/d3-license"],

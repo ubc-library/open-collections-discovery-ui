@@ -101,6 +101,7 @@ commit_log.txt
 
 # Build Files #
 www/js/build/*
+www/js/config-vars.js
 www/js/src/require/config.js
 www/js/src/require/gruntConfig.js
 www/viewer/viewer.min.js

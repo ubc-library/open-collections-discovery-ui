@@ -25,6 +25,12 @@
     }
 }
 
+.language-select {
+  float:right;
+  padding-right: 8px;
+  font-size:11px;
+}
+
 .dl-masthead-blue {
     @extend .dl-masthead;
     background-color: $ubc-blue;

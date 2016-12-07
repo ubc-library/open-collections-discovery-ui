@@ -1,5 +1,5 @@
 <nav>
-    <span ng-hide="innerError" class="dl-label-sm">Results on pages:</span>
+    <span ng-hide="innerError" class="dl-label-sm">{{ 'RESULTS_ON_PAGES' | translate }}:</span>
     <span ng-if="innerError" ng-bind-html="data.pData.error"></span>
     <a href="" class="dl-r-pages"
         ng-class="{current : $parent.currentPi === p.index}" 

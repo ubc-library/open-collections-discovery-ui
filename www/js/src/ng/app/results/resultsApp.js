@@ -18,14 +18,14 @@ define(function (require) {
         dlFilters = require('filters'),
         dlThumbs = require('thumbnails'),
         dlD3charts = require('d3onebar'),
-        i8 = require('services/i8'),
+        ngTranslate = require('pascalprecht.translate'),
 
         dlServices = require('services/fieldService');
-    dlServices = require('services/searchString');
-    dlServices = require('services/esSearch');
-    dlServices = require('services/collectionData');
-    dlServices = require('services/responsive');
-    dlServices = require('services/highlighter');
+        dlServices = require('services/searchString');
+        dlServices = require('services/esSearch');
+        dlServices = require('services/collectionData');
+        dlServices = require('services/responsive');
+        dlServices = require('services/highlighter');
 
 
     // path to templates for directives
@@ -41,7 +41,8 @@ define(function (require) {
             'dlD3charts',
             'dlSavedItems',
             'dlPagination',
-            'dlThumbs'
+            'dlThumbs',
+            'pascalprecht.translate'
         ],
         ['$locationProvider', function ($locationProvider) {
             $locationProvider.html5Mode({
@@ -55,7 +56,119 @@ define(function (require) {
     ).config(["$interpolateProvider", function ($interpolateProvider) {
             $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
         }]
-    );
+    ).config(['$translateProvider', function ($translateProvider) {
+
+        $translateProvider.translations('en', {
+            'AFFILIATION': 'Affiliation',
+            'APPLIED': 'applied',
+            'CLEAR': 'Clear',
+            'DESCRIPTION': 'Description',
+            'DETAILS': 'Details',
+            'DETAILS_HIDE': '- Hide ',
+            'DETAILS_SHOW': '+ Show ',
+            'DRILL_DOWN': 'Drill-down',
+            'DRILL_DOWN_DESC': 'Filter terms will be updated each time a filter is added, narrowing to reflect the new results each time.',
+            'FACET': 'Facet',
+            'FACET_CLEAR_FILTERS': 'Clear all filters',
+            'FACET_DESC': 'All filter terms for the current search query will remain visible regardless filters added. Many filters can be added, but conflicting selections may yield no results.',
+            'FACET_KEEP_FILTERS': 'Keep filters',
+            'FILTER': 'filter',
+            'FILTER_APPLY': 'Apply filter',
+            'FILTER_RESULTS': 'Filter Results',
+            'FILTERS_HIDE': 'Hide filters',
+            'FILTERS_SHOW': 'Show filters',
+            'FOUND': 'found',
+            'ITEM_CREATOR_UNKNOWN': 'Creator Unknown',
+            'ITEM_DESCRIPTION': 'Description',
+            'ITEM_EMBARGOED': '<b>Embargoed</b>: Access by request only.',
+            'KEYWORDS': 'Keywords',
+            'LOAD_MORE': 'Load More',
+            'MAINPAGE_DESCRIPTION': 'A standalone version of the UBC Library Open Collections search results UI.',
+            'MAINPAGE_HEADER': 'Research Discovery',
+            'NO_RESULTS': 'No results found',
+            'OF': 'of',
+            'OPTIONS': 'Options',
+            'PROGRAM': 'Program',
+            'REDIRECTING': 'Redirecting to item...',
+            'RESULT': 'result',
+            'RESULTS_LOADING': 'Loading page-level results...',
+            'RESULTS_ON_PAGES': 'Results on pages',
+            'SCHOLARLY LEVEL': 'Scholarly level',
+            'SEARCH_ADVANCED': 'Advanced Search',
+            'SEARCH_ALL': 'Search all content',
+            'SEARCH_LIMITED': 'Search cIRcle only',
+            'SEARCH_RESULTS': 'Search Results',
+            'SORT_OPTIONS_1': 'Sort by relevance',
+            'SORT_OPTIONS_2': 'Sort by title A-Z',
+            'SORT_OPTIONS_3': 'Sort by title Z-A',
+            'SORT_OPTIONS_4': 'Sort by author A-Z',
+            'SORT_OPTIONS_5': 'Sort by author Z-A',
+            'SORT_OPTIONS_6': 'Sort by oldest to newest',
+            'SORT_OPTIONS_7': 'Sort by newest to oldest',
+            'SUBJECT': 'Subject',
+            'TO': 'to',
+            'VIEW_OPTIONS_1': 'List view',
+            'VIEW_OPTIONS_2': 'Detailed view',
+            'VIEW_OPTIONS_3': 'Thumbnail view',
+        });
+             
+        $translateProvider.translations('fr', {
+            'AFFILIATION': 'Affiliation',
+            'APPLIED': 'appliqué',
+            'CLEAR': 'Supprimer',
+            'DESCRIPTION': 'Description',
+            'DETAILS': 'Détails',
+            'DETAILS_HIDE': '- Cacher ',
+            'DETAILS_SHOW': '+ Montrer ',
+            'DRILL_DOWN': 'Percer',
+            'DRILL_DOWN_DESC': 'Filtrer les termes seront mis à jour chaque fois qu\'un filtre est ajouté, se rétrécissant pour refléter les nouveaux résultats à chaque fois.',
+            'FACET': 'Facette',
+            'FACET_CLEAR_FILTERS': 'Supprimer les filtres',
+            'FACET_DESC': 'Tous les termes de filtre pour la requête de recherche en cours resteront visibles, indépendamment des filtres ajoutés. De nombreux filtres peuvent être ajoutés, mais les sélections contradictoires peuvent donner aucun résultat.',
+            'FACET_KEEP_FILTERS': 'Garder les filtres',
+            'FILTER': 'filtre',
+            'FILTER_APPLY': 'Appliquer filtre',
+            'FILTER_RESULTS': 'Filtrer les résultats',
+            'FILTERS_HIDE': 'Masquer les filtres',
+            'FILTERS_SHOW': 'Afficher les filtres',
+            'FOUND': 'trouvé',
+            'ITEM_CREATOR_UNKNOWN': 'Créateur Inconnu',
+            'ITEM_DESCRIPTION': 'Description',
+            'ITEM_EMBARGOED': '<b>Sous embargo</b>: Accès sur demande seulement.',
+            'KEYWORDS': 'Mots clés',
+            'LOAD_MORE': 'Montre plus',
+            'MAINPAGE_DESCRIPTION': 'Une version autonome du UBC Library Open Collections résultats de recherche UI.',
+            'MAINPAGE_HEADER': 'Découverte de la recherche',
+            'NO_RESULTS': 'Aucun résultat trouvé',
+            'OF': 'de',
+            'OPTIONS': 'Options',
+            'PROGRAM': 'Programme',
+            'REDIRECTING': 'Redirection vers l\'article...',
+            'RESULT': 'résultat',
+            'RESULTS_LOADING': 'Chargement des résultats de la page...',
+            'RESULTS_ON_PAGES': 'Résultats sur les pages',
+            'SCHOLARLY LEVEL': 'Niveau scolaire',
+            'SEARCH_ADVANCED': 'Recherche avancée',
+            'SEARCH_ALL': 'Rechercher tout le contenu',
+            'SEARCH_LIMITED': 'Recherche cIRcle seulement',
+            'SEARCH_RESULTS': 'Résultats de la recherche',
+            'SORT_OPTIONS_1': 'Trier par pertinence',
+            'SORT_OPTIONS_2': 'Trier par titre A-Z',
+            'SORT_OPTIONS_3': 'Trier par titre Z-A',
+            'SORT_OPTIONS_4': 'Trier par auteur A-Z',
+            'SORT_OPTIONS_5': 'Trier par auteur Z-A',
+            'SORT_OPTIONS_6': 'Trier par plus vieux à nouveau',
+            'SORT_OPTIONS_7': 'Trier par plus nouveau à vieux',
+            'SUBJECT': 'Sujet',
+            'TO': 'à',
+            'VIEW_OPTIONS_1': 'Vue liste',
+            'VIEW_OPTIONS_2': 'Vue détaillée',
+            'VIEW_OPTIONS_3': 'Vue vignette',
+        });
+
+        $translateProvider.useSanitizeValueStrategy('escape');            
+        //$translateProvider.preferredLanguage('fr');
+    }]);
 
     resultsApp.boot = function () {
         angular.bootstrap(document, ['resultsApp']);
@@ -65,7 +178,7 @@ define(function (require) {
     resultsApp.run(['tCache', function (tCache) {
         tCache.clearCache();  // clear cache on dev
         tCache.templatePath = templatePath;
-        tCache.getTemplates(['results-parent.html', 'results-list2.html', 'inner-results.html']);
+        tCache.getTemplates(['results-parent.html', 'results-list2.html', 'inner-results.html','mainpage-search-options.html','mainpage-results-header.html']);
     }]);
 
 
@@ -88,7 +201,8 @@ define(function (require) {
             'facetService',
             'fieldService',
             'utility',
-            function (searchString, es, $scope, $rootScope, $location, rExport, $timeout, $filter, pVars, collectionData, max400, highlighter, facetService, fieldService, utility) {
+            '$translate',
+            function (searchString, es, $scope, $rootScope, $location, rExport, $timeout, $filter, pVars, collectionData, max400, highlighter, facetService, fieldService, utility,$translate) {
                 $scope.rUpdating = true;
                 // make sure fields mappings are loaded FIRST
                 fieldService.getFields().then(function () {
@@ -113,57 +227,24 @@ define(function (require) {
                     $scope.esr = {};
                     $scope.filterCount = searchString.filterCount;
                     $scope.pageRange = [0];
+
                     //view options
-                    $scope.rViewOptions = [{
-                        "index": 0,
-                        "label": "List view",
-                        "perPage": 20
-                    }, {
-                        "index": 1,
-                        "label": "Detailed view",
-                        "perPage": 20
-                    }, {
-                        "index": 2,
-                        "label": "Thumbnail view",
-                        "perPage": 60
-                    }];
+                    $scope.rViewOptions = [
+                        {"index": 0, "label": "List view",      "perPage": 20}, 
+                        {"index": 1, "label": "Detailed view",  "perPage": 20}, 
+                        {"index": 2, "label": "Thumbnail view", "perPage": 60},
+                    ];
+
                     //sort options
-                    $scope.rSortOptions = [{
-                        "index": 0,
-                        "label": "Sort by relevance",
-                        "field": false,
-                        "order": "desc",
-                    }, {
-                        "index": 1,
-                        "label": "sort by title A-Z",
-                        "field": "title",
-                        "order" : "asc",
-                    }, {
-                        "index": 2,
-                        "label": "Sort by title Z-A",
-                        "field": "title",
-                        "order": "desc",
-                    }, {
-                        "index": 3,
-                        "label": "Sort by author A-Z",
-                        "field": "creator",
-                        "order": "asc",
-                    }, {
-                        "index": 4,
-                        "label": "Sort by author Z-A",
-                        "field": "creator",
-                        "order": "desc",
-                    }, {
-                        "index": 5,
-                        "label": "Sort oldest to newest",
-                        "field": "sortDate",
-                        "order": "asc",
-                    }, {
-                        "index": 6,
-                        "label": "Sort newest to oldest",
-                        "field": "sortDate",
-                        "order": "desc",
-                    }];
+                    $scope.rSortOptions = [
+                        {"index": 0, "label": "Sort by relevance",     "field": false,      "order": "desc" }, 
+                        {"index": 1, "label": "sort by title A-Z",     "field": "title",    "order" : "asc" }, 
+                        {"index": 2, "label": "Sort by title Z-A",     "field": "title",    "order": "desc" }, 
+                        {"index": 3, "label": "Sort by author A-Z",    "field": "creator",  "order": "asc"  }, 
+                        {"index": 4, "label": "Sort by author Z-A",    "field": "creator",  "order": "desc" }, 
+                        {"index": 5, "label": "Sort oldest to newest", "field": "sortDate", "order": "asc"  }, 
+                        {"index": 6, "label": "Sort newest to oldest", "field": "sortDate", "order": "desc" },
+                    ];
 
                     // UPDATE SEARCH BASED ON INITIAL VARS TO START APP
                     //*******************************************************//
@@ -215,6 +296,16 @@ define(function (require) {
 
                     // modify search on facet
                     facetService.changed($scope.modifySearch);
+
+                    // Update language when user clicks language link
+                    $scope.changeLanguage = function (langKey) {
+                        var currentLang = $translate.use();
+                        $translate.use(langKey);
+                        $scope.language = langKey;
+                        if (currentLang != langKey) {
+                            updateLocation();
+                        }
+                    };
 
                     // update facets & searchString on switch between cIRcle / all content
                     $scope.dspChange = function () {
@@ -305,6 +396,7 @@ define(function (require) {
 
                     //update search string
                     searchString.vars.query = $scope.q;
+                    searchString.vars.lang = $scope.language;
                     searchString.vars.sort = {field: $scope.rSort.field, order: $scope.rSort.order};
                     searchString.dspOnly = $scope.dspOnly;
 
@@ -367,7 +459,7 @@ define(function (require) {
 
                     typeof callback == 'function' && callback();
 
-                }
+                }            
 
                 // update URL
                 function updateLocation(callback) {
@@ -386,6 +478,7 @@ define(function (require) {
                         'sort': $scope.rSort.index,
                         'view': $scope.resultsView.index,
                         'circle': $scope.dspOnly,
+                        'lang': $scope.language,
 
                         'dBegin': beginKey,
                         'dEnd': endKey,
@@ -426,6 +519,9 @@ define(function (require) {
                     $scope.q = decodeURIComponent(locSearch.q) || '*';
                     //get query
                     $scope.terms = $scope.q;
+                    //get language
+                    $scope.language = locSearch.lang || "en";
+                    $translate.use($scope.language);
                     // Setup RSS LINK
                     $scope.rssLink = website_base_url + "/rss/search/rss.xml?q=" + encodeURIComponent($scope.q) + "&sort=" + $scope.rSort.index + "&circle=" + $scope.dspOnly;
                     // get filters
@@ -457,6 +553,18 @@ define(function (require) {
                         };
                         $scope.rssLink = $scope.rssLink + '&dBegin=' + locSearch.dBegin + '&dEnd=' + locSearch.dEnd;
                     }
+
+                    $translate('VIEW_OPTIONS_1').then(function(t) { $scope.rViewOptions[0]['label'] = t; })
+                    $translate('VIEW_OPTIONS_2').then(function(t) { $scope.rViewOptions[1]['label'] = t; })
+                    $translate('VIEW_OPTIONS_3').then(function(t) { $scope.rViewOptions[2]['label'] = t; })
+                    $translate('SORT_OPTIONS_1').then(function(t) { $scope.rSortOptions[0]['label'] = t; })
+                    $translate('SORT_OPTIONS_2').then(function(t) { $scope.rSortOptions[1]['label'] = t; })
+                    $translate('SORT_OPTIONS_3').then(function(t) { $scope.rSortOptions[2]['label'] = t; })
+                    $translate('SORT_OPTIONS_4').then(function(t) { $scope.rSortOptions[3]['label'] = t; })
+                    $translate('SORT_OPTIONS_5').then(function(t) { $scope.rSortOptions[4]['label'] = t; })
+                    $translate('SORT_OPTIONS_6').then(function(t) { $scope.rSortOptions[5]['label'] = t; })
+                    $translate('SORT_OPTIONS_7').then(function(t) { $scope.rSortOptions[6]['label'] = t; })
+
                     function getLocFilters(loc) {
                         var output = [];
                         var input = locSearch[loc];
@@ -510,8 +618,6 @@ define(function (require) {
                       utility) {
 
                 var query = searchString.vars.query;
-                // language switchter tbd.
-                var language = 'en';
                 $scope.base_url = website_base_url;
                 // check view
                 // detailed view
@@ -755,6 +861,18 @@ define(function (require) {
                         $('#cols-wrap').sidebar({'toggle': true});
                     });
                 }
+            };
+        })
+        .directive('mainpageSearchOptions', function () {
+            return {
+                restrict: 'E',
+                templateUrl: templatePath + 'mainpage-search-options.html?version=' + app_version,
+            };
+        })
+        .directive('mainpageResultsHeader', function () {
+            return {
+                restrict: 'E',
+                templateUrl: templatePath + 'mainpage-results-header.html?version=' + app_version,
             };
         })
 

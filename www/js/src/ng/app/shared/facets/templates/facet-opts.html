@@ -1,20 +1,18 @@
 <div class="dl-facet-opts dl-f-behavior" ng-if="f">
-	<strong class="opts-top">Options: <i class="fa fa-info-circle" ng-click="optsHelp=!optsHelp" ga-event="facet_opts,info_toggle"></i></strong>
+	<strong class="opts-top">{{ 'OPTIONS' | translate }}: <i class="fa fa-info-circle" ng-click="optsHelp=!optsHelp" ga-event="facet_opts,info_toggle"></i></strong>
 	<div class="row-fluid dl-ani-hide opts-help" ng-show="optsHelp">
-		<p><strong>Drill-Down:</strong> Filter terms will be updated each time a filter is added, narrowing to reflect the new results each time.</p>
-		<p><strong>Facet:</strong> All filter terms for the current search query will remain visible regardless filters added. Many filters can be added, but conflicting selections may yield no results.</p>
+		<p><strong>{{ 'DRILL_DOWN' | translate }}:</strong> {{ 'DRILL_DOWN_DESC' | translate }}</p>
+		<p><strong>{{ 'FACET' | translate }}:</strong> {{ 'FACET_DESC' | translate }}</p>
 	</div>
 	<div class="row-fluid ">
-		<label for="drill"><input type="radio" name="behave" id="drill" value="drill" ng-model="fBehavior" ng-change="behaviorChange(fBehavior)" >Drill-Down </label>
-		<label for="expand"><input type="radio" name="behave" id="expand" value="expand" ng-model="fBehavior" ng-change="behaviorChange(fBehavior)" >Facet </label>
+		<label for="drill"><input type="radio" name="behave" id="drill" value="drill" ng-model="fBehavior" ng-change="behaviorChange(fBehavior)" >{{ 'DRILL_DOWN' | translate }} </label>
+		<label for="expand"><input type="radio" name="behave" id="expand" value="expand" ng-model="fBehavior" ng-change="behaviorChange(fBehavior)" >{{ 'FACET' | translate }} </label>
 	</div>
 
 	<div class="row-fluid btns">
 	    <button class="dl-sbtn-sm" ng-click="keepFiltersToggle()">
-	        <i class="fa fa-check-square-o" ng-show="keepFilters"></i> <i class="fa fa-square-o" ng-show="!keepFilters"></i> Keep Filters
+	        <i class="fa fa-check-square-o" ng-show="keepFilters"></i> <i class="fa fa-square-o" ng-show="!keepFilters"></i>{{ 'FACET_KEEP_FILTERS' | translate }}
 	    </button>
-	    <button class="dl-sbtn-sm" ng-click="clearAllFilters()" ga-event="facet_opts,clear_all_filters">Clear All Filters</button>
+	    <button class="dl-sbtn-sm" ng-click="clearAllFilters()" ga-event="facet_opts,clear_all_filters">{{ 'FACET_CLEAR_FILTERS' | translate }}</button>
     </div>
-
-
 </div>

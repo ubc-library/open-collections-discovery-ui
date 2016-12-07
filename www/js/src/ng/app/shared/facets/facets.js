@@ -16,11 +16,61 @@ define(function(require) {
         dlFilters = require('filters'),
         dlAnimations = require('animations'),
         dlServices = require('services/collectionData'),
-        dlServices = require('services/fieldService');
+        dlServices = require('services/fieldService'),
+        ngTranslate = require('pascalprecht.translate');
 
+    var facets = angular.module('dlFacets', ['dlServices', 'dlFilters', 'dlD3charts', 'dlAnimations','pascalprecht.translate']
+    ).config(['$translateProvider', function ($translateProvider) {
 
-    var facets = angular.module('dlFacets', ['dlServices', 'dlFilters', 'dlD3charts', 'dlAnimations']);
-
+        $translateProvider.translations('en', {
+            'AFFILIATION': 'Affiliation',
+            'CAMPUS': 'Campus',
+            'CLEAR': 'Clear',
+            'COLLECTION': 'Collection',
+            'CREATOR(S)': 'Creator(s)',
+            'DATE RANGE': 'Date range',
+            'DEGREE': 'Degree',
+            'DRILL_DOWN': 'Drill-down',
+            'DRILL_DOWN_DESC': 'Filter terms will be updated each time a filter is added, narrowing to reflect the new results each time.',
+            'FACET': 'Facet',
+            'FACET_DESC': 'All filter terms for the current search query will remain visible regardless filters added. Many filters can be added, but conflicting selections may yield no results.',
+            'FILTERS_HIDE': 'Hide filters',
+            'FILTERS_SHOW': 'Show filters',
+            'GENRE': 'Genre',
+            'KEYWORDS': 'Keywords',
+            'LOAD_MORE': 'Load More',
+            'OPTIONS': 'Options',
+            'PROGRAM': 'Program',
+            'SCHOLARLY LEVEL': 'Scholarly level',
+            'SUBJECT': 'Subject',
+            'TYPE': 'Type',
+        });
+             
+        $translateProvider.translations('fr', {
+            'AFFILIATION': 'Affiliation',
+            'CAMPUS': 'Campus',
+            'CLEAR': 'Supprimer',
+            'COLLECTION': 'Collection',
+            'CREATOR(S)': 'Créateur(s)',
+            'DATE RANGE': 'Intervalle de dates',
+            'DEGREE': 'Degré',
+            'DRILL_DOWN': 'Percer',
+            'DRILL_DOWN_DESC': 'Filtrer les termes seront mis à jour chaque fois qu\'un filtre est ajouté, se rétrécissant pour refléter les nouveaux résultats à chaque fois.',
+            'FACET': 'Facette',
+            'FACET_DESC': 'Tous les termes de filtre pour la requête de recherche en cours resteront visibles, indépendamment des filtres ajoutés. De nombreux filtres peuvent être ajoutés, mais les sélections contradictoires peuvent donner aucun résultat.',
+            'FILTERS_HIDE': 'Masquer les filtres',
+            'FILTERS_SHOW': 'Afficher les filtres',
+            'GENRE': 'Genre',
+            'KEYWORDS': 'Mots clés',
+            'LOAD_MORE': 'Montre plus',
+            'OPTIONS': 'Options',
+            'PROGRAM': 'Programme',
+            'SCHOLARLY LEVEL': 'Niveau scolaire',
+            'SUBJECT': 'Sujet',
+            'TYPE': 'Type',
+        });
+        $translateProvider.useSanitizeValueStrategy('escape');            
+    }]);
 
     /************** FACETS CONTROLLERS *****************/
     // NOTE: results and advanced search modules use their own top level controllers for facets,
@@ -76,8 +126,8 @@ define(function(require) {
 
             }])
 
-        .controller('fGroupController', ['$scope', '$rootScope', 'esSearchString', 'esSearchService', '$timeout', 'collectionData', 'facetService', 'datechart', 'utility',
-            function($scope, $rootScope, searchString, es, $timeout, collectionData, facetService, datechart, utility) {
+        .controller('fGroupController', ['$scope', '$rootScope', 'esSearchString', 'esSearchService', '$timeout', 'collectionData', 'facetService', 'datechart', 'utility','$translate',
+            function($scope, $rootScope, searchString, es, $timeout, collectionData, facetService, datechart, utility, $translate) {
 
                 // NEW FACET QUERY
 
@@ -178,9 +228,14 @@ define(function(require) {
                 // updateFilters();
                 facetService.updateFilters(updateFilters);
                 function updateFilters(){
-                    //console.trace('UPDATE FACETS', $scope.ff.label);
+
+                    console.trace('UPDATE FACET ', $scope.ff.label, 'translating: ', $scope.ff.translateKey.toUpperCase() );
+                    // Re-translate the facet label
+                    $translate( $scope.ff.translateKey.toUpperCase() ).then(function(t) { $scope.ff.display = t; })
+
                     // console.log('searchstring filters', $scope.ff, searchString.vars.filter[$scope.ff.label]);
                     // handle dates
+
                     if($scope.ff.label === 'sortDate'){
 
                         // use timeout to ensure node exists for D3 to draw into.
@@ -438,8 +493,8 @@ define(function(require) {
     // holds facet objects' data and opts, handles change notifications
 
     services.factory('facetService',
-        [ 'esSearchService', 'esSearchString', 'utility', '$rootScope', 'fieldService', 'collectionData', '$filter',
-            function (es, searchString, utility, $rootScope, fieldService, collectionData, $filter) {
+        [ 'esSearchService', 'esSearchString', 'utility', '$rootScope', 'fieldService', 'collectionData', '$filter','$translate',
+            function (es, searchString, utility, $rootScope, fieldService, collectionData, $filter, $translate) {
 
                 var facetService = {};
 
@@ -507,6 +562,7 @@ define(function(require) {
                                     order: -5,
                                     label: 'sortDate',
                                     display: 'date range',
+                                    translateKey: 'date range',
                                     buckets: {},
                                     selection: {
                                         begin: {},
@@ -532,11 +588,13 @@ define(function(require) {
                                     order : orderVal,
                                     label: fArray[i],
                                     display: fieldService.fields[fArray[i]].label,
+                                    translateKey: fieldService.fields[fArray[i]].label,
                                     buckets : {},
                                     open: false,
                                     sum_left: 0,
                                     sortField: facetService.defaultSort
                                 };
+                                $translate( obj[fArray[i]].translateKey.toUpperCase() ).then(function(t) { obj[fArray[i]].display = t; })
                             }
 
                             if (facetService.minimized) { obj[fArray[i]].open = false; }

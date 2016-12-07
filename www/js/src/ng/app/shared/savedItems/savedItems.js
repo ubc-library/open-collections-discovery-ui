@@ -12,23 +12,54 @@ define(function (require) {
         dlServices = require('services/collectionData'),
         dlServices = require('services/print'),
         angularModalService = require('ngModal'),
-        dlFilters = require('filters');
+        dlFilters = require('filters'),
+        ngTranslate = require('pascalprecht.translate');
 
     var savedItems = angular.module('dlSavedItems', [ 
         'dlServices', 
         'angularModalService', 
         'ngCookies', 
         'ngSanitize', 
-        'ngCsv'
-        ]);
+        'ngCsv',
+        'pascalprecht.translate'
+        ]
+    ).config(['$translateProvider', function ($translateProvider) {
 
+        $translateProvider.translations('en', {
+            'STASH_ACTION_DOWNLOAD': 'Download',
+            'STASH_ACTION_EMAIL': 'Email',
+            'STASH_ACTION_EMAIL_SEND': 'Send',
+            'STASH_ACTION_EMAIL_SUCCESS': '<b>Success:</b> Your list of items has been emailed to the email address provided.',
+            'STASH_ACTION_PRINT': 'Print',
+            'STASH_CLEAR': 'Clear stash',
+            'STASH_DESC': 'Stashed items are stored temporarily. If you would like to refer to them at a later date, you should email, download, or print your list.',
+            'STASH_IS_EMPTY': 'Your stash is empty.',
+            'STASH_IS_EMPTY_DESC': 'Click the <i class="fa fa-folder-o"></i> (folder icon) near a result to add it to your stash.',
+            'STASH_MAIN_HEADER': 'Stashed Items',
+        });
+          
+        $translateProvider.translations('fr', {
+            'STASH_ACTION_DOWNLOAD': 'Télécharger',
+            'STASH_ACTION_EMAIL': 'Email',
+            'STASH_ACTION_EMAIL_SEND': 'Envoyer',
+            'STASH_ACTION_EMAIL_SUCCESS': '<b>Succès:</b> Votre liste d\'articles a été envoyé à l\'adresse e-mail fournie.',
+            'STASH_ACTION_PRINT': 'Imprimer',
+            'STASH_CLEAR': 'Vider votre cachette',
+            'STASH_DESC': 'Articles a caché sont conservés temporairement. Si vous souhaitez vous référer à une date ultérieure, vous devez envoyer un courriel, télécharger ou imprimer votre liste.',
+            'STASH_IS_EMPTY': 'Votre cachette est vide.',
+            'STASH_IS_EMPTY_DESC': 'Cliquez sur le <i class="fa fa-folder-o"></i> (icône de dossier) à proximité d\'un résultat pour l\'ajouter à votre cachette.',
+            'STASH_MAIN_HEADER': 'Articles a caché',
+        });
+
+        $translateProvider.useSanitizeValueStrategy('escape');
+        //$translateProvider.preferredLanguage('fr');
+    }]);
 
     /************** SAVED ITEMS CONTROLLERS *****************/
 
 
-    savedItems.controller('savedItemsCtrl', [ '$scope', 'ModalService', 'rExport', 'utility',
-        function ($scope, modalService, rExport, utility) {
-
+    savedItems.controller('savedItemsCtrl', [ '$scope', 'ModalService', 'rExport', 'utility','$translate',
+        function ($scope, modalService, rExport, utility,$translate) {
 
             $scope.savedCount = rExport.saved.length;
 
@@ -61,8 +92,8 @@ define(function (require) {
 
         } ])
 
-        .controller('savedModalCtrl', [ '$scope', 'close', 'rExport', 'printer', '$http', 'utility',
-            function ($scope, close, rExport, printer, $http, utility) {
+        .controller('savedModalCtrl', [ '$scope', 'close', 'rExport', 'printer', '$http', 'utility','$translate',
+            function ($scope, close, rExport, printer, $http, utility, $translate) {
 
                 $scope.display = true;
 
