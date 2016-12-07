@@ -2,7 +2,7 @@ requirejs.config({
   "baseUrl" : "/js/build/",
   "waitSeconds": 0,
   "paths": {
-        "advSearch": "ng/app/adv-search",
+        "advSearch": "ng/app/adv-search/advSearchApp",
         "results": "ng/app/results",
         "facets": "ng/app/shared/facets/facets",
         "pagination": "ng/app/shared/pagination/pagination",
@@ -14,7 +14,7 @@ requirejs.config({
         "d3onebar": "ng/app/shared/d3directives/d3onebar",
         "d3datechart": "ng/app/shared/d3directives/d3datechart",
         "thumbnails": "ng/app/shared/thumbnails/thumbnails",
-        "angular": "vendor/angular/angular.min",
+        "angular": "vendor/angular/angular",
         "ngAnimate": "vendor/angular-animate/angular-animate.min",
         "ngAria": "vendor/angular-aria/angular-aria.min",
         "ngCookies": "vendor/angular-cookies/angular-cookies.min",
@@ -25,6 +25,7 @@ requirejs.config({
         "ngModal": "vendor/angular-modal-service/dst/angular-modal-service.min",
         "ngCsv": "vendor/ng-csv/build/ng-csv.min",
         "pascalprecht.translate":"vendor/angular-translate/angular-translate.min",
+        "ngColorPicker" : "vendor/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.min",
         "d3": "vendor/d3/d3",
         "velocity": "vendor/velocity/velocity.min",
         "enquire": "vendor/enquire/dist/enquire.min",
@@ -124,6 +125,10 @@ requirejs.config({
         },
         "googlefont" : {
             "exports": "googlefont"
+        },
+        "ngColorPicker": {
+            "deps": ["angular"],
+            "exports": "ngColorPicker"
         }
     }
 });

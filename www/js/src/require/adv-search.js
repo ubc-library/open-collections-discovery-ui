@@ -1,8 +1,6 @@
 // Start the main app logic.
-require(['results/resultsApp', 'sidebar', 'fastclickInit'],
+require(['advSearch', 'sidebar', 'fastclickInit'],
     function(resultsApp) {
-        // enable sidebar
-        $('#cols-wrap').sidebar({});  // include empty object to use default settings.
         // start angular app
         resultsApp.boot();
         // select all input on click (or not)
