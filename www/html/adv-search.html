@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- OC Styles -->
-    <link href="/stylesheets/css/discovery-ui.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/css/adv-search.css" rel="stylesheet" type="text/css">
     <!--js-->
     <script type="text/javascript" src="/js/config-vars.js"></script>
     <!--<script src="https://code.jquery.com/jquery-3.1.0.min.js"-->
@@ -45,7 +45,7 @@
         </div>
     </div>
 
-    <div class="expand dl-content"> <!-- Main Content Area Start -->
+    <div class="expand dl-content dl-advs-wrapper"> <!-- Main Content Area Start -->
         <!-- start main DL Content -->
 
         <article class="dl-spaced">
@@ -221,12 +221,11 @@
                         </div>
                         <div class="row-fluid">
                             <label for="placeholder" >  Search prompt (use this to describe any limits you've added to your search):</label>
-                            <input type="text" id="placeholder" ng-model="embed.placeholder" class="span5">
+                            <input type="text" id="placeholder" ng-model="embed.placeholder">
                         </div>
-
                         <div class="row-fluid">
-                            <label >Widget colour (darker colours recommended): </label>
-                            <input type="text" colorpicker id="color" ng-model="embed.color" class="span2">
+                            <label class="row-fluid" >Widget colour (darker colours recommended): </label>
+                            <input type="text" colorpicker id="color" ng-model="embed.color" class="col-md-2">
                             <div colorbox color="embed.color" class="dl-colorbox dl-thm-plain-base selected"></div>
                             <div colorbox color="embed.color" class="dl-colorbox dl-thm-solid-chung"></div>
                             <div colorbox color="embed.color" class="dl-colorbox dl-thm-solid-bcbib"></div>
