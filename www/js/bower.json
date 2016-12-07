@@ -42,7 +42,7 @@
     "hammerjs": "latest",
     "angular-aria": "1.3.x",
     "inflection": "latest",
-    "angular-translate": "latest"
+    "angular-translate": "*"
   },
   "resolutions": {
     "angular": "~1.3.x"
