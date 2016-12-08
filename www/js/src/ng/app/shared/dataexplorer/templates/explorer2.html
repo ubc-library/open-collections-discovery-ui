@@ -1,0 +1,75 @@
+	
+<div class="row-fluid dl-de-bottom dl-thm-light-base">
+	<div class="row-fluid dl-srch-area-sm">
+        <div class="dl-search row-fluid"
+             >            
+            <form name="dlSearch" onsubmit="doSearch(dlSearch.q.value)" >
+                <input 
+                ns-popover
+                ns-popover-theme="ns-popover-cannedsearch"
+                ns-popover-template="popover"
+                ns-popover-trigger="click"
+                ns-popover-timeout="-1"
+                ns-popover-placement="bottom|left"
+                
+                id="dl-srch-input" type="search" name="q" placeholder="Search for items in this collection" aria-label="Search Terms"
+                >
+                <button type="submit" value="search for terms" class="dl-search-btn" aria-label="Search">
+
+                    <svg class="dl-srch-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px"
+                         height="24px" viewBox="33.333 33.333 333.333 333.333" xml:space="preserve">
+                        <g>
+                            <g>
+                                <path d="M150,66.667c46.667,0,83.334,36.667,83.334,83.333S196.667,233.334,150,233.334S66.667,196.667,66.667,150
+                        S103.333,66.667,150,66.667 M150,33.333C85,33.333,33.333,85,33.333,150S85,266.666,150,266.666S266.666,215,266.666,150
+                        S215,33.333,150,33.333L150,33.333z"/>
+                            </g>
+                        </g>
+                        <g>
+                            <polygon points="366.667,338.334 338.333,366.666 233.334,261.666 233.334,233.334 261.666,233.334    "/>
+
+                            <rect class="dl-srch-svg" x="229.839" y="210.379"
+                                  transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 579.4046 240.7478)" fill="#FFFFFF" width="20"
+                                  height="60"/>
+                        </g>
+                    </svg>
+                </button>
+            </form>
+        </div>
+        
+        <div class="row-fluid dl-filter-row" ng-if="isFiltered()">
+            <span class="dl-de-label">Limit my search to:</span>
+            <span ng-repeat="(k, v) in filterTerms">
+                <span class="dl-de-filter" ng-repeat="t in filterTerms[k]" ng-click="unFilter(k, t)">{[{k | capitalize}]} {[{t}]} <i class="fa fa-remove"></i></span>
+            </span>
+            <span class="dl-de-filter" ng-if="filterDates" ng-click="unFilter('dates')">Dates {[{ filterDates.begin.display}]} to {[{filterDates.end.display}]} <i class="fa fa-remove"></i></span>
+        </div>
+    </div>
+</div>
+
+<div class="dl-data-explorer">
+    <p class="dl-de-helper">
+        Explore the distribution of <strong>{[{total}]} items in this collection</strong> over time and by category. <strong>Select a category or date range to filter your search</strong>.
+    </p>
+    <div class="row-fluid" ng-hide="exploreData.type.length == 0">
+        <title class="dl-de-label span1">Type: </title>
+        <d3-one-bar data-title="type" data="exploreData.type" class="dl-one-bar span11" pass-up="passUp(obj)" bar-height="4"></d3-one-bar>
+    </div>
+    <div class="row-fluid" ng-hide="exploreData.subject.length == 0">
+        <title class="dl-de-label span1">Subject: </title>
+        <d3-one-bar data-title="subject" data="exploreData.subject" class="dl-one-bar span11"   
+        pass-up="passUp(obj)" bar-height="4">
+        <!--  -->
+    </d3-one-bar>
+    </div>
+    <div class="row-fluid dl-de-chart-title">
+        <span class="dl-de-label"><span ng-if="xByYear === 'Total Items'">{[{total}]} </span>{[{xByYear}]} by Year:</span>
+        <button class="dl-sbtn-xsm" ng-if="xByYear != 'Total Items'" ng-click="switchToTotal()">Show Total Items</button>
+            </div>
+    <div class="row-fluid dl-collection-de">
+        <div class="dl-spinner dl-middle" ng-show="loading"></div>
+
+        <!-- <span class="dl-de-chart-title">Subject Frequency Over Time</span> -->
+        <div class="" explorer-chart pass-up="passUp(obj)"></div>
+    </div>
+</div>
