@@ -5,8 +5,8 @@
 </dl>
 
 <!-- "chunked" facets (for adv serach, theses) -->
-<div class="row-fluid" ng-if="chunked">
-    <div class="span6" ng-repeat="fChunk in f">
+<div class="row" ng-if="chunked">
+    <div class="col-md-6" ng-repeat="fChunk in f">
         <dl facet-group ng-repeat="ff in fChunk track by $index" class="dl-f-group ng-fade-in" ng-class="ff.field">
     </dl>
     </div>

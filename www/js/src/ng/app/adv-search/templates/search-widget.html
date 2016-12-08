@@ -1,0 +1,66 @@
+<div class="dl-ec-modal" ng-show="display">
+    <div class="dl-modal-top">
+         <a href="" title="close" class="close" ng-click="close()"><i class="fa fa-remove"></i></a>
+    </div>
+    <div class="dl-modal-content">
+    <p></p>
+    <h3>Example Embed</h3>
+        <pre>
+            <code>
+                &lt;div style="width: 100%"&gt;
+                        {[{embed}]}
+                &lt;/div&gt;        
+            </code>
+        </pre>
+    <h3>Advanced Options</h3>
+    <table style="width:90%; margin: 0 auto;">
+        <tbody>
+        <tr>
+        <th> Attribute Name </th>
+        <th> Accepts </th>
+        <th> Default </th>
+        <th> Description </th>
+        </tr>
+        <tr>
+        <td> <b>data-placeholder</b> </td>
+        <td> String </td>
+        <td> Search the Open Collection... <br> </td>
+        <td> Text appearing in search box prior to user typing </td>
+        </tr>
+        <tr>
+        <td> <b>data-color</b> </td>
+        <td> Colour hexcode </td>
+        <td> #002145 <br> </td>
+        <td> Theme colour for buttons in search widget </td>
+        </tr>
+        <tr>
+        <td> <b>data-inline</b> </td>
+        <td> Boolean </td>
+        <td> false </td>
+        <td> Default sends user to Open Collections landing page for search results. 'True' returns search results via AJAX within hosting page, underneath searchbox. </td>
+        </tr>
+        <tr>
+        <td> <b>data-scope</b> </td>
+        <td> String </td>
+        <td> None </td>
+        <td> Scoped collections search. Only applicable for inline searches. Current valid values are: <em>chung</em>, <em>berkeley</em> </td>
+        </tr>
+        <tr>
+        <td> <b>data-size</b> </td>
+        <td> Integer </td>
+        <td> 5 </td>
+        <td> Number of search results returned per page. Only applicable for inline searches. </td>
+        </tr>
+        <tr>
+        <td> <b>data-debug</b> </td>
+        <td> Boolean </td>
+        <td> false </td>
+        <td> Outputs some debug code to console. Only application for inline searches. </td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
+
+<div class="dl-modal-fade" ng-show="display" ng-click="close()"></div>
+

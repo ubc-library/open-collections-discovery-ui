@@ -1,0 +1,20 @@
+@import "global/base";
+@import "themes/_base-theme";
+
+// load components
+@import 'components/component-patterns';
+@import 'components/containers';
+@import 'components/loading';
+@import 'components/masthead';
+@import 'components/buttons';
+//@import 'components/modals';
+@import 'components/search-bar';
+//@import 'components/side-nav';
+//@import 'components/pagination';
+@import 'components/facets';
+//@import 'components/thumbnails';
+@import 'components/dataviz';
+//@import 'components/results-opts';
+//@import 'components/results-list';
+//@import 'components/saved-results';
+@import 'components/adv-search';

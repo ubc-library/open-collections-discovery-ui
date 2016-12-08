@@ -9,7 +9,7 @@
     "Kevin Ho <kevho99@mail.ubc.ca>"
   ],
   "description": "The UBC Open Collections",
-  "license": "LGPL",
+  "license": "GNU",
   "homepage": "https://driad-dev.library.ubc.ca",
   "private": true,
   "ignore": [
@@ -42,7 +42,8 @@
     "hammerjs": "latest",
     "angular-aria": "1.3.x",
     "inflection": "latest",
-    "angular-translate": "*"
+    "angular-translate": "*",
+    "angular-bootstrap-colorpicker": "~3.0.18"
   },
   "resolutions": {
     "angular": "~1.3.x"

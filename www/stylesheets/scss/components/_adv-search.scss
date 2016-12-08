@@ -1,0 +1,280 @@
+/////////////////////////
+// ADVANCED SEARCH
+////////////////////////
+
+
+.dl-advs-wrapper {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dl-advs-cont {
+  @extend .dl-thm-light-base;
+  border: 1px solid $gray4;
+  padding: 10px 15px 40px 15px;
+  @extend %borderbox;
+  border-radius: 2px;
+}
+
+.dl-advs-inputs {
+  @extend %borderbox;
+  position: relative;
+  border: 1px solid $gray2;
+  @extend %border-rad-sm;
+  background-color: $gray0;
+  padding: 10px 6px 10px 6px;
+
+
+  vertical-align: middle;
+  font-weight: bold;
+
+  width: 80%;
+  margin: 12px auto;
+
+  input {
+    width: 380px;
+    @extend %border-rad-sm;
+    top:0;
+    margin: 0 6px;
+
+    height: 30px;
+  }
+
+  select.sm {
+    width: 70px;
+  }
+
+  select.fields, select.anyall{
+    margin: 0 6px;
+    width: 200px;
+    height: 30px;
+
+  }
+
+  @media #{$max-1200} {
+    width: 90%;
+    input {
+      width: 310px;
+    }
+    select.fields, select.anyall{
+      width: 190px;
+    }
+  }
+
+  @media screen and (max-width: 1150px) {
+    width: 90%;
+    input {
+      width: 280px;
+    }
+    select.fields, select.anyall{
+      width: 190px;
+    }
+  }
+
+  @media #{$max-979} {
+
+    padding: 10px 43px 10px 6px;
+    text-align: center;
+
+    input {
+      margin: 15px auto 6px auto;
+      width: 98%;
+    }
+    select.fields, select.anyall {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+.dl-advs-boolgrp {
+  width: 100px;
+  margin: 0 auto 12px auto;
+  position: relative;
+
+  select.bool {
+    width: 100%;
+    margin-bottom: 0;
+    height: 30px;
+  }
+}
+
+.dl-advs-rm-btn {
+  width: 32px;
+  display: inline-block;
+  max-height: 22px;
+  vertical-align: middle;
+  line-height: 22px;
+  position: absolute;
+  right: 12px;
+
+  @media #{$max-979} {
+    right: 6px;
+    top: 8px;
+  }
+}
+
+.dl-advs-rm-btn.disabled {
+  color: $gray1;
+  cursor: default;
+  &:hover {
+    border-color: $gray2;
+  }
+
+}
+
+.dl-advs-add-btn {
+  width: 120px;
+  margin: 12px auto;
+}
+
+
+
+.dl-advs-searchrow {
+  // @extend .dl-thm-solid-base;
+  padding: 12px 0 6px 0;
+}
+
+.dl-advs-srch {
+  @extend .dl-btn;
+  height: 38px;
+  line-height: 40px;
+  padding-top: 5px;
+
+  // float: right;
+  width: 55%;
+  margin: 0 auto -30px;
+  // margin-right: 5%;
+
+  &:hover {
+    .dl-srch-svg {
+      fill: $bblue;
+    }
+  }
+
+  @media #{$max-767} {
+    margin-bottom: 3px;
+  }
+}
+
+h4.dl-advs-addlimits {
+  vertical-align: middle;
+  margin: 0 0 0 24px;
+  a,a:visited {
+    color: $ubc-blue;
+  }
+
+  float: left;
+
+  @media #{$max-767} {
+    margin: 12px 0 0 12px;
+  }
+}
+
+.dl-advs-circleopt {
+  height: 30px;
+  float: right;
+  margin: 0 24px 0 0;
+  input, label {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: bottom;
+  }
+  input {
+    margin: 0 6px 0 0;
+  }
+  @media #{$max-767} {
+    margin: 12px 0 0 12px;
+  }
+}
+
+.dl-advs-cont .dl-facets {
+  border-top: 1px solid $gray4;
+  margin-top: 40px;
+}
+
+.dl-advs-embedopts {
+  background: $gray1;
+  padding: 6px;
+  input[type="text"] {
+    display: inline-block;
+    min-width: 80px;
+    margin: 3px;
+    top: 0;
+  }
+  label {
+    margin-top: 6px;
+    // display: inline-block;
+  }
+
+  .dl-colorbox {
+    height: 26px;
+    width: 26px;
+    border: 2px solid $gray1;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 3px;
+
+    &.selected  {
+      height: 26px;
+      width: 26px;
+      border: 2px solid white;
+      // border: 2px solid red;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+
+}
+
+textarea.dl-advs-output {
+  @extend %borderbox;
+  padding: 9px;
+  background-color: $gray0;
+  border: 1px solid $gray3;
+  width: 100%;
+  @extend .libmonospace;
+  font-size: 12px;
+  line-height: 16px;
+  cursor: text;
+  height: 38px;
+  &.multiline {
+    height: 350px;
+  }
+}
+
+ul.dl-apifields {
+  background-color: white;
+  padding: 12px;
+  border: 1px solid $gray2;
+  margin: 0;
+  list-style-type: none;
+  input[type="checkbox"], label {
+    display: inline;
+  }
+  max-height: 300px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.dl-advs-buildquery .dl-ajax-loader {
+  min-height: 40px;
+  .dl-spinner {
+    margin-top: 12px;
+  }
+}
+
+#placeholder {
+  min-width: 400px;
+  @media #{$max-979} {
+    width: 100%;
+  }
+}
+
+.dl-collapse-title {
+  padding: 6px;
+}

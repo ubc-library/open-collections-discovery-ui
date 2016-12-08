@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OC Discovery UI</title>
+    <!--stylesheets-->
+    <!-- bootstrap & fontawesome -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- OC Styles -->
+    <link href="/stylesheets/css/adv-search.css" rel="stylesheet" type="text/css">
+    <!--js-->
+    <script type="text/javascript" src="/js/config-vars.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.1.0.min.js"-->
+    <!--integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>-->
+    <script type="text/javascript" src="/js/build/vendor/requirejs/require.js"></script>
+    <script>
+        try {
+            var requireConfigObj = require(['/js/build/require/require-config.js']);
+            require([requireConfigObj], function () {
+                require(["/js/build/require/adv-search.js"])
+            });
+        } catch (err) {
+            console.log(err);
+        }
+    </script>
+</head>
+<body ng-controller="advSearchController">
+<base href="/"/>
+<div class="dl expand" role="main">
+    <div class="dl-masthead expand row-fluid">
+
+        <!--<h1 class="libserif">-->
+            <!--<span translate>MAINPAGE_HEADER</span>-->
+        <!--</h1>-->
+        <!--<p><span translate>MAINPAGE_DESCRIPTION</span></p>-->
+        <!--<p></p>-->
+        <div class="dl-header expand dl-thm-solid-base">
+            <h3>Advanced Search</h3>
+        </div>
+        <div class="language-select">
+            <a ng-click="changeLanguage('fr')">FR</a> |
+            <a ng-click="changeLanguage('en')">EN</a>
+        </div>
+    </div>
+
+    <div class="expand dl-content dl-advs-wrapper"> <!-- Main Content Area Start -->
+        <!-- start main DL Content -->
+
+        <article class="dl-spaced">
+            <h3>Build An Advanced Search Query</h3>
+            <div class="row-fluid dl-advs-cont">
+                <div class="dl-advs-buildquery" ng-cloak>
+                    <span ng-repeat="s in querySegments">
+                <div class="dl-center dl-advs-boolgrp ng-cloak">
+                    <select class="bool sm" ng-model="s.bool.selected" ng-options="o as o for o in s.bool.opts"
+                            ng-hide="s.track===0" aria-label="Boolean" ng-change="selectEvent('select_bool', s.bool.selected)"></select>
+
+                </div>
+
+                <div class="dl-advs-inputs">
+
+                    <select class="anyall" ng-model="s.anyAll.selected" ng-options="o as (o | capitalize) for o in s.anyAll.opts" aria-label="Limit by" ng-change="selectEvent('select_anyall', s.anyAll.selected)"></select>
+
+                    <input type="text" ng-model="s.keywords" onclick="this.select();" ng-enter="search()" aria-label="Text query field">
+
+                    <span class="in">in</span>
+
+                    <select class="fields" ng-model="s.fields.selected" ng-options="val.map as val.label for (key, val) in s.fields.opts" aria-label="Select field" ng-change="selectEvent('select_field', s.fields.selected)"></select>
+
+                    <button class="dl-sbtn-lrg dl-advs-rm-btn" ng-disabled="s.track===0" ng-class="{disabled:s.track===0}" ng-click="rmSegment($index)" ng-cloak aria-label="Remove field" ga-event="advanced_search,remove_segment"><i class="fa fa-close"></i></button>
+
+                </div>
+
+
+
+            </span>
+
+                    <button class="dl-sbtn-lrg dl-advs-add-btn" ng-click="addSegment()" aria-label="Add field">Add field</button>
+
+
+                    <div class="row-fluid dl-advs-searchrow">
+                        <button class="dl-advs-srch" ng-click="search()" aria-label="Search">
+                            <!-- magnifying glass svg -->
+                            <svg class="dl-srch-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewbox="33.333 33.333 333.333 333.333" xml:space="preserve">
+                        <g>
+                            <g>
+                                <path d="M150,66.667c46.667,0,83.334,36.667,83.334,83.333S196.667,233.334,150,233.334S66.667,196.667,66.667,150
+                        S103.333,66.667,150,66.667 M150,33.333C85,33.333,33.333,85,33.333,150S85,266.666,150,266.666S266.666,215,266.666,150
+                        S215,33.333,150,33.333L150,33.333z"/>
+                            </g>
+                        </g>
+                        <g>
+                            <polygon points="366.667,338.334 338.333,366.666 233.334,261.666 233.334,233.334 261.666,233.334    "/>
+
+                            <rect class="dl-srch-svg" x="229.839" y="210.379" transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 579.4046 240.7478)"
+                                  fill="#FFFFFF" width="20" height="60"/>
+                        </g>
+                    </svg>
+                        </button>
+
+                        <h4 class="dl-advs-addlimits" ng-class="{open:!hidefacets}">
+                            <i class="fa fa-angle-right" ng-hide="!hideFacets"></i>
+                            <i class="fa fa-angle-down ng-hide" ng-hide="hideFacets"></i>
+                            <a href="#" ng-click="hideFacets = !hideFacets; loadFacets()" ga-event="advanced_search,toggle_limits">Add Limits</a>
+                        </h4>
+
+                        <div class="dl-advs-circleopt" ga-event="advanced_search,toggle_circle">
+                            <input type="checkbox" id="circleopt" ng-model="circleOnly"><label for="circleopt">Search cIRcle Only</label>
+                        </div>
+
+                    </div>
+
+
+
+                    <span ng-controller="facetsController" ng-cloak>
+                <div  class="dl-facets row-fluid" ng-hide="hideFacets" class="ng-hide">
+                    <div class="row-fluid">
+                        <facets ng-if="f" data-f="f" chunked="chunked"></facets>
+                    </div>
+                </div>
+            </span>
+                </div>
+            </div>
+        </article>
+
+        <article>
+            <!-- <h3>The Next Level</h3> -->
+            <section class="dl-collapse-section row-fluid dl-spaced-sm" data-advs-section="query_syntax" ng-cloak>
+                <!-- <div class="dl-uparrow-sm"></div> -->
+                <h4 class="dl-collapse-title" role="button" tabindex="0" class="dl-collapse-title" ng-init="isOpen=true" ng-click="isOpen=!isOpen; load = true"><i class="fa fa-angle-down" ng-hide="!isOpen"></i><i class="fa fa-angle-right" ng-hide="isOpen"></i> Learn the Query Syntax</h4>
+
+                <div class="dl-ani-hide dl-collapse-content" ng-hide="!isOpen">
+                    <p>
+                        The Open Collections uses the <a target="_blank" href="http://lucene.apache.org/core/2_9_4/queryparsersyntax.html">Apache Lucene Query Parser Syntax</a> for advanced searches. <strong>Your current query looks like this:</strong>
+                    </p>
+                    <textarea clickselect readonly ga-copy-event="advanced_search,copy_query_string" class="dl-advs-output">{[{ displayString }]}</textarea>
+                    <p>
+                        You can use this syntax in<strong> any search bar in the Open Collections site</strong> to quickly execute complex queries without relying on the advanced search tool.
+                    </p>
+                    <p>
+                        <strong>Useful tricks</strong> include using the boolean operators AND, NOT, and OR (all caps) between search terms to dictate how the terms are matched, and limiting your query to a specific metadata field by prefixing it with the field name followed by a colon character. Phrases wrapped in quotation marks will be matched exactly, and you may group queries using parentheses.
+                    </p>
+                    <p>
+                        <strong>For example</strong>, <span class="dl-monospace">(title: "North Pole" AND accurate) AND (description: map OR "engraved print" NOT 'south')</span> will search for items with 'North Pole' and 'accurate' in the title and either 'map' or 'engraved print', but not 'south' in the subject field. You can <a target="_blank" href="http://lucene.apache.org/core/2_9_4/queryparsersyntax.html">learn more advanced search techniques</a> from the Apache Lucene Query Syntax manual.
+                    </p>
+                    <p>
+                        <strong>Note</strong> that Open Collections' <strong>'Limits' and 'Filters' are applied separately</strong> from the query string, and searches from within a particular collection or item will remain scoped to that collection or item.
+                    </p>
+                    <p>
+                        The prefixes in the field names you see here represent the defined vocabulary to which the field belongs. To learn more about the <strong>Open Collections metadata model</strong>, check out our <a href="/docs/" link-out>API Documentation</a>.
+                    </p>
+                </div>
+            </section >
+
+            <!-- API Builder tool may not be applicable for other applications. -->
+
+            <!--<section class="dl-collapse-section row-fluid dl-spaced-sm" data-advs-section="api_call" ng-cloak>-->
+                <!--<h4 class="dl-collapse-title" role="button" tabindex="0" class="dl-collapse-title" ng-click="isOpen=!isOpen; loadApi()"><i class="fa fa-angle-down" ng-hide="!isOpen"></i><i class="fa fa-angle-right" ng-hide="isOpen"></i> Make an API Call Based on this Query</h4>-->
+                <!--<div class="dl-ani-hide dl-collapse-content" ng-if="apiLoaded" ng-hide="!isOpen">-->
+
+                    <!--<p><strong>You can use the following query object to return data from the Open Collections API.</strong> To query the Open Collections API with your advanced search query, select the fields you would like to return, and use the following query object to request your data. </p>-->
+                    <!--<p><strong>Visit the <a link-out href="/research">Open Collections Research API page</a> to request an API key and to learn more about how you can use the API.</strong></p>-->
+                    <!--<div class="dl-advs-embedopts">-->
+                        <!--<button class="dl-sbtn"-->
+                                <!--ns-popover-->
+                                <!--ns-popover-template="{[{apiFieldsTemplate}]}"-->
+                                <!--ns-popover-trigger="click"-->
+                                <!--ns-popover-timeout="0.3"-->
+                                <!--ns-popover-placement="bottom|left"-->
+                                <!--ng-popover-theme="ns-popover-dropdown"-->
+                        <!--&gt;Select Fields to Return</button>-->
+                    <!--</div>-->
+                    <!--<textarea clickselect readonly class="dl-advs-output multiline" ga-copy-event="advanced_search,copy_api_query">{[{apiObj}]}</textarea>-->
+
+                    <!--<p>Then enter your <a link-out href="/research">API Key</a>, and send the object above in an HTTP Post request to the following url:</p>-->
+
+                    <!--<div class="dl-advs-embedopts">-->
+                        <!--<input type="text" ng-model="apiKey" placeholder="Enter your API key here" class="span3">-->
+                    <!--</div>-->
+                    <!--<textarea clickselect readonly class="dl-advs-output" ga-copy-event="advanced_search,copy_api_key">{[{apiUrl}]}{[{apiKey}]}</textarea>-->
+                    <!--{#   <p>The Open Collections API is built on <a href="https://www.elastic.co/products/elasticsearch">ElasticSearch</a>, and can be used far more powerfully than the queries generated here. <strong><a href="">Learn more about using the Open Collections API</a></strong> to power data-driven research and custom applications. #}-->
+                <!--</div>-->
+            <!--</section>-->
+
+            <!-- RSS Builder -->
+            <section class="dl-collapse-section row-fluid dl-spaced-sm" data-advs-section="rss_feed" ng-init="isOpen=false" ng-cloak>
+                <h4 class="dl-collapse-title" role="button" tabindex="0" class="dl-collapse-title" ng-click="isOpen=!isOpen; loadWidget();"><i class="fa fa-angle-down" ng-hide="!isOpen"></i><i class="fa fa-angle-right" ng-hide="isOpen"></i> Make an RSS Feed Scoped to this Query</h4>
+                <div class="dl-ani-hide dl-collapse-content" ng-if="widgetLoaded" ng-hide="!isOpen">
+                    <label for="rssSort">RSS Feed Sorting:
+                        <select id="rssSort" ng-model='rssSortStore' ng-change="changeRSSSort()">
+                            <option value="0" label="Sort by relevance">Sort by relevance</option>
+                            <option value="1" label="Sort by title a-z">Sort by title a-z</option>
+                            <option value="2" label="Sort by title z-a">Sort by title z-a</option>
+                            <option value="3" label="Sort by author a-z">Sort by author a-z</option>
+                            <option value="4" label="Sort by author z-a">Sort by author z-a</option>
+                            <option value="8" label="Sort by date created old-new" selected="selected">Sort by date created old-new</option>
+                            <option value="9" label="Sort by date created new-old" selected="selected">Sort by date created new-old</option>
+                            <option value="5" label="Sort oldest to newest">Sort oldest to newest</option>
+                            <option value="6" label="Sort newest to oldest">Sort newest to oldest</option>
+                            <option value="7" label="Sort by latest added" selected="selected">Sort by latest added</option>
+                            <option value="10" label="Sort by latest available (useful for cIRcle)" selected="selected">Sort by latest available (useful for cIRcle)</option>
+                        </select>
+                    </label>
+                    <p>Customize your RSS feed with the advanced search builder, then copy and paste the link below into the RSS reader of your choice.</p>
+                    <a href="{{base_url}}/rss/search/rss.xml{[{ rss.queryString }]}" link-out style="word-break:break-all;">{{base_url}}/rss/search/rss.xml{[{ rss.queryString }]}</a>
+                </div>
+            </section>
+
+            <section class="dl-collapse-section row-fluid dl-spaced-sm" data-advs-section="search_widget" ng-init="isOpen=false" ng-cloak>
+                <h4 class="dl-collapse-title" role="button" tabindex="0" class="dl-collapse-title" ng-click="isOpen=!isOpen; loadWidget();"><i class="fa fa-angle-down" ng-hide="!isOpen"></i><i class="fa fa-angle-right" ng-hide="isOpen"></i> Make an Embeddable Search Widget Scoped to this Query</h4>
+                <div class="dl-ani-hide dl-collapse-content" ng-if="widgetLoaded" ng-hide="!isOpen">
+                    <p>Customize your widget with the following options, then copy and paste the code below into the HTML of your page to embed a scoped search widget in your website.</p>
+                    <div class="dl-advs-embedopts">
+                        <div class="row-fluid">
+                            <label for="inline"><input id="inline" type="checkbox" ng-model="embed.inline" ng-change="updateWidgetData();">  Return results in the widget. If not selected, searches from the widget will redirect to the Open Collections Search Results page.</label>
+                        </div>
+                        <div class="row-fluid">
+                            <label for="keepQuery"><input id="keepQuery" type="checkbox" ng-model="embed.keepQuery" ng-change="loadWidget();">  Use my query as a starting point. This will pre-fill the search widget with the advanced search query entered above. Users will still be able to enter their own queries.</label>
+                        </div>
+                        <div class="row-fluid">
+                            <label for="placeholder" >  Search prompt (use this to describe any limits you've added to your search):</label>
+                            <input type="text" id="placeholder" ng-model="embed.placeholder">
+                        </div>
+                        <div class="row-fluid">
+                            <label class="row-fluid" >Widget colour (darker colours recommended): </label>
+                            <input type="text" colorpicker id="color" ng-model="embed.color" class="col-md-2">
+                            <div colorbox color="embed.color" class="dl-colorbox dl-thm-plain-base selected"></div>
+                            <div colorbox color="embed.color" class="dl-colorbox dl-thm-solid-chung"></div>
+                            <div colorbox color="embed.color" class="dl-colorbox dl-thm-solid-bcbib"></div>
+                            <div colorbox color="embed.color" class="dl-colorbox dl-thm-solid-bcnewspapers"></div>
+                            <div colorbox color="embed.color" class="dl-colorbox dl-thm-solid-birs"></div>
+                            <div colorbox color="embed.color" class="dl-colorbox dl-thm-solid-ccs"></div>
+                            <div colorbox color="embed.color" class="dl-colorbox dl-thm-solid-langmann"></div>
+                            <div colorbox color="embed.color" class="dl-colorbox dl-thm-solid-ubcpublications"></div>
+                        </div>
+
+
+
+                    </div>
+                    <textarea clickselect readonly class="dl-advs-output multiline" ga-copy-event="advanced_search,copy_embed_widget">
+&lt;article id="ubcOpenCollectionsSearchWidget" style="border-color:{[{ embed.color }]}"&gt;
+    &lt;h2&gt;UBC Library&lt;/h2&gt;
+    &lt;h3&gt;Open Collections&lt;/h3&gt;
+    &lt;div id="ocw-attach-search"  style="width: 100%"&gt;
+
+        &lt;script id="dl-search"
+            src="{[{embed.src}]}"
+            data-inline="{[{ embed.inline }]}"
+            data-placeholder="{[{ embed.placeholder }]}"
+            data-color="{[{ embed.color }]}"
+            data-keep-query="{[{ embed.keepQuery }]}"
+            data-query-string='{[{ embed.queryString }]}'
+            data-filter-string='{[{ embed.filterString }]}'
+            data-query-obj='{[{ embed.queryObj }]}'
+        &gt;
+        &lt;/script&gt;
+    &lt;/div&gt;
+&lt;/article&gt;
+                    </textarea>
+                </div>
+            </section>
+
+        </article>
+
+    </div>
+</body>
+</html>
