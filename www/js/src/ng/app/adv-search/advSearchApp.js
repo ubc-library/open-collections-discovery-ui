@@ -191,7 +191,8 @@ define(function(require){
                 $scope.search = function(){
                     var query = "?q=" + encodeURIComponent(makeQueryString()),
                         limits = filters.all || '',
-                        url = '/search';
+                        // TODO: update url as appropriate
+                        url = '/html/discovery-ui.html';
                     var fullquery = url + query + limits;
                     if ($scope.circleOnly){
                         fullquery += '&circle=y';
